@@ -16,10 +16,10 @@
         }
     ],
     "esmodules": [
-        "bskr.mjs"
+        "dnd5e.mjs"
     ],
     "styles": [
-        "bskr.css"
+        "dnd5e.css"
     ],
     "documentTypes": {
         "ActiveEffect": {
@@ -420,9 +420,10 @@
     ],
     "languages": [
         {
-      "lang": "pt-BR",
-      "name": "Português (Brasil)",
-      "path": "lang/pt-BR.json"
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json",
+            "flags": {}
         }
     ],
     "media": [
