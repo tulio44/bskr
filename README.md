@@ -1,6 +1,6 @@
 ![](https://github.com/foundryvtt/dnd5e/blob/master/ui/official/dnd5e-repo.jpg?raw=true)
 
-# Foundry Virtual Tabletop - Dungeons & Dragons Fifth Edition Game System
+# Berserker System (FoundryVTT)
 
 This game system for [Foundry Virtual Tabletop](http://foundryvtt.com) provides character sheet and game system 
 support for the Fifth Edition of the world's most popular roleplaying game.

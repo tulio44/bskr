@@ -1,27 +1,25 @@
 {
-    "id": "dnd5e",
-    "title": "Dungeons & Dragons Fifth Edition",
-    "description": "A system for playing the fifth edition of the world's most popular role-playing game in the Foundry Virtual Tabletop environment.",
-    "version": "4.3.9",
+    "id": "bskr",
+    "title": "Berserker",
+    "description": "Um sistema de RPG baseado no D&D 5e, desenvolvido por Tulio44, feito por Gabriel Bavaroti",
+    "version": "1.0.0",
     "compatibility": {
         "minimum": "12.331",
         "verified": "13.340"
     },
-    "url": "https://github.com/foundryvtt/dnd5e/",
-    "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
-    "download": "https://github.com/foundryvtt/dnd5e/releases/download/release-4.3.9/dnd5e-release-4.3.9.zip",
+    "url": "https://github.com/tulio44/Berserker/",
     "authors": [
         {
-            "name": "Atropos",
-            "url": "https://foundryvtt.com",
+            "name": "Tulio44",
+            "url": "https://github.com/tulio44",
             "flags": {}
         }
     ],
     "esmodules": [
-        "dnd5e.mjs"
+        "bskr.mjs"
     ],
     "styles": [
-        "dnd5e.css"
+        "bskr.css"
     ],
     "documentTypes": {
         "ActiveEffect": {
