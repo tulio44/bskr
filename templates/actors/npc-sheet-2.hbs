@@ -15,12 +15,12 @@
             {{!-- Portrait --}}
             {{#if editable}}
             <label class="slide-toggle">
-                <input type="checkbox" name="flags.dnd5e.showTokenPortrait" {{ checked portrait.token }}>
+                <input type="checkbox" name="flags.bskr.showTokenPortrait" {{ checked portrait.token }}>
                 {{#if portrait.token}}
                     {{ localize "DOCUMENT.Token" }}
                     <i class="fas fa-toggle-on"></i>
                 {{else}}
-                    {{ localize "DND5E.Portrait" }}
+                    {{ localize "BSKR.Portrait" }}
                     <i class="fas fa-toggle-off"></i>
                 {{/if}}
             </label>
@@ -33,10 +33,10 @@
 
                 {{#if showDeathSaves}}
                 <div class="death-saves">
-                    <button type="button" data-action="rollDeathSave" data-tooltip="DND5E.DeathSaveRoll"
-                            aria-label="{{ localize "DND5E.DeathSaveRoll" }}"
+                    <button type="button" data-action="rollDeathSave" data-tooltip="BSKR.DeathSaveRoll"
+                            aria-label="{{ localize "BSKR.DeathSaveRoll" }}"
                             class="{{ rollableClass }} death-save unbutton">
-                        <dnd5e-icon src="systems/dnd5e/icons/svg/statuses/dead-outline.svg"></dnd5e-icon>
+                        <bskr-icon src="systems/bskr/icons/svg/statuses/dead-outline.svg"></bskr-icon>
                     </button>
 
                     {{#with system.attributes.death}}
@@ -46,7 +46,7 @@
                         <div class="success">
                             <input type="text" name="system.attributes.death.success" data-dtype="Number"
                                    inputmode="numeric" pattern="[+=\-]?\d*" placeholder="0" value="{{ success }}"
-                                   aria-label="{{ localize "DND5E.DeathSaveSuccessLabel" }}">
+                                   aria-label="{{ localize "BSKR.DeathSaveSuccessLabel" }}">
                             <i class="fa-solid fa-circle-check" inert></i>
                         </div>
 
@@ -54,7 +54,7 @@
                         <div class="failure">
                             <input type="text" name="system.attributes.death.failure" data-dtype="Number"
                                    inputmode="numeric" pattern="[+=\-]?\d*" placeholder="0" value="{{ failure }}"
-                                   aria-label="{{ localize "DND5E.DeathSaveFailureLabel" }}">
+                                   aria-label="{{ localize "BSKR.DeathSaveFailureLabel" }}">
                             <i class="fa-solid fa-circle-xmark" inert></i>
                         </div>
                     </div>
@@ -67,14 +67,14 @@
 
                     {{!-- Initiative Modifier --}}
                     <div class="initiative {{#unless editable}}{{ rollableClass }}{{/unless}}"
-                        {{#if editable}}data-tooltip="DND5E.InitiativeConfig"
-                         aria-label="{{ localize "DND5E.InitiativeConfig" }}"
-                        {{else}}data-tooltip="DND5E.Initiative" aria-label="{{ localize "DND5E.Initiative" }}"
+                        {{#if editable}}data-tooltip="BSKR.InitiativeConfig"
+                         aria-label="{{ localize "BSKR.InitiativeConfig" }}"
+                        {{else}}data-tooltip="BSKR.Initiative" aria-label="{{ localize "BSKR.Initiative" }}"
                          data-action="rollInitiative"{{/if}}>
                         {{#if editable}}
                         <a class="config-button" data-action="initiative"><i class="fas fa-cog"></i></a>
                         {{else}}
-                        <span>{{ dnd5e-numberFormat system.attributes.init.total signDisplay="always" }}</span>
+                        <span>{{ bskr-numberFormat system.attributes.init.total signDisplay="always" }}</span>
                         {{/if}}
                     </div>
 
@@ -86,8 +86,8 @@
 
                 {{!-- Loyalty --}}
                 {{#if showLoyalty}}
-                <div class="loyalty-badge badge" aria-label="{{ localize "DND5E.Loyalty" }}"
-                     {{#unless editable}}data-tooltip="DND5E.Loyalty"{{/unless}}>
+                <div class="loyalty-badge badge" aria-label="{{ localize "BSKR.Loyalty" }}"
+                     {{#unless editable}}data-tooltip="BSKR.Loyalty"{{/unless}}>
                     {{#if editable}}
                     <input type="text" class="uninput" name="system.attributes.loyalty.value" inputmode="numeric"
                            pattern="[+=\-]?\d*" placeholder="—" value="{{ source.attributes.loyalty.value }}"
@@ -107,14 +107,14 @@
                 {{!-- AC --}}
                 <div class="left ac">
 
-                    <div class="ac-badge badge" aria-label="{{ localize "DND5E.ArmorClass" }}">
+                    <div class="ac-badge badge" aria-label="{{ localize "BSKR.ArmorClass" }}">
                         {{#if editable}}
-                        <a class="config-button" data-action="armor" data-tooltip="DND5E.ArmorConfig"
-                           aria-label="{{ localize "DND5E.ArmorConfig" }}">
+                        <a class="config-button" data-action="armor" data-tooltip="BSKR.ArmorConfig"
+                           aria-label="{{ localize "BSKR.ArmorConfig" }}">
                             <i class="fas fa-cog"></i>
                         </a>
                         {{else}}
-                        <div data-attribution="attributes.ac" data-attribution-caption="DND5E.ArmorClass"
+                        <div data-attribution="attributes.ac" data-attribution-caption="BSKR.ArmorClass"
                              data-tooltip-direction="DOWN">
                             {{ system.attributes.ac.value }}
                         </div>
@@ -137,11 +137,11 @@
                                 <span class="separator">&sol;</span>
                                 <span class="max">{{ effectiveMax }}</span>
                                 {{#if tempmax}}
-                                <span class="bonus">{{ dnd5e-numberFormat tempmax signDisplay="always" }}</span>
+                                <span class="bonus">{{ bskr-numberFormat tempmax signDisplay="always" }}</span>
                                 {{/if}}
                                 {{#if @root.editable}}
-                                <a class="config-button" data-action="hitPoints" data-tooltip="DND5E.HitPointsConfig"
-                                   aria-label="{{ localize "DND5E.HitPointsConfig" }}">
+                                <a class="config-button" data-action="hitPoints" data-tooltip="BSKR.HitPointsConfig"
+                                   aria-label="{{ localize "BSKR.HitPointsConfig" }}">
                                     <i class="fas fa-cog"></i>
                                 </a>
                                 {{/if}}
@@ -152,7 +152,7 @@
                         {{#if showDeathSaves}}
                         <div class="tmp">
                             <input type="text" name="system.attributes.hp.temp" data-dtype="Number" inputmode="numeric"
-                                   placeholder="{{ localize "DND5E.TMP" }}" value="{{ temp }}" pattern="[+=\-]?\d*">
+                                   placeholder="{{ localize "BSKR.TMP" }}" value="{{ temp }}" pattern="[+=\-]?\d*">
                         </div>
                         {{/if}}
                     </div>
@@ -163,12 +163,12 @@
                     <div class="meter sectioned split">
                         <div class="temp">
                             <input type="text" name="system.attributes.hp.temp" data-dtype="Number" inputmode="numeric"
-                                   placeholder="{{ localize "DND5E.TMP" }}" value="{{#if temp}}{{ temp }}{{/if}}"
+                                   placeholder="{{ localize "BSKR.TMP" }}" value="{{#if temp}}{{ temp }}{{/if}}"
                                    pattern="[+=\-]?\d*">
                         </div>
                         <div class="tempmax">
                             <input type="text" name="system.attributes.hp.tempmax" data-dtype="Number"
-                                   inputmode="numeric" placeholder="+{{ localize "DND5E.Max" }}"
+                                   inputmode="numeric" placeholder="+{{ localize "BSKR.Max" }}"
                                    value="{{#if tempmax}}{{ tempmax }}{{/if}}" pattern="[+=\-]?\d*">
                         </div>
                     </div>
@@ -212,8 +212,8 @@
                         {{!-- Type --}}
                         <li class="creature-type">
                             {{#if editable}}
-                            <a class="config-button" data-action="type" data-tooltip="DND5E.CreatureTypeConfig"
-                               aria-label="{{ localize "DND5E.CreatureTypeConfig" }}">
+                            <a class="config-button" data-action="type" data-tooltip="BSKR.CreatureTypeConfig"
+                               aria-label="{{ localize "BSKR.CreatureTypeConfig" }}">
                                 <span>{{ labels.type }}</span>
                                 <i class="fas fa-cog"></i>
                             </a>
@@ -226,7 +226,7 @@
                         <li class="creature-alignment">
                             {{#if editable}}
                             <input type="text" name="system.details.alignment" value="{{ source.details.alignment }}"
-                                   placeholder="{{ localize "DND5E.Alignment" }}">
+                                   placeholder="{{ localize "BSKR.Alignment" }}">
                             {{else}}
                             <span>{{ system.details.alignment }}</span>
                             {{/if}}
@@ -243,31 +243,31 @@
                     <div class="left">
 
                         <div class="sheet-header-buttons">
-                            <button type="button" class="short-rest gold-button" data-tooltip="DND5E.REST.Short.Label"
-                                    aria-label="{{ localize "DND5E.REST.Short.Label" }}">
+                            <button type="button" class="short-rest gold-button" data-tooltip="BSKR.REST.Short.Label"
+                                    aria-label="{{ localize "BSKR.REST.Short.Label" }}">
                                 <i class="fas fa-utensils"></i>
                             </button>
-                            <button type="button" class="long-rest gold-button" data-tooltip="DND5E.REST.Long.Label"
-                                    aria-label="{{ localize "DND5E.REST.Long.Label" }}">
+                            <button type="button" class="long-rest gold-button" data-tooltip="BSKR.REST.Long.Label"
+                                    aria-label="{{ localize "BSKR.REST.Long.Label" }}">
                                 <i class="fas fa-campground"></i>
                             </button>
                         </div>
 
                         <div class="proficiency">
-                            <span>{{ localize "DND5E.Proficiency" }}</span>
-                            <strong>{{ dnd5e-formatModifier system.attributes.prof }}</strong>
+                            <span>{{ localize "BSKR.Proficiency" }}</span>
+                            <strong>{{ bskr-formatModifier system.attributes.prof }}</strong>
                         </div>
 
                     </div>
 
                     {{!-- CR --}}
-                    <div class="right cr-badge badge" aria-label="{{ localize "DND5E.CRLabel" cr=system.details.cr }}"
-                         {{#unless editable}}data-tooltip="DND5E.ChallengeRating"{{/unless}}>
+                    <div class="right cr-badge badge" aria-label="{{ localize "BSKR.CRLabel" cr=system.details.cr }}"
+                         {{#unless editable}}data-tooltip="BSKR.ChallengeRating"{{/unless}}>
                         {{#if editable}}
                         <input type="text" class="uninput" name="system.details.cr"
-                               value="{{ dnd5e-formatCR source.details.cr }}">
+                               value="{{ bskr-formatCR source.details.cr }}">
                         {{else}}
-                        {{{ dnd5e-formatCR system.details.cr }}}
+                        {{{ bskr-formatCR system.details.cr }}}
                         {{/if}}
                     </div>
 
@@ -285,12 +285,12 @@
                     <div class="mod">
                         {{#if @root.editable}}
                         <a class="config-button" data-action="ability"
-                           data-tooltip="{{ localize "DND5E.AbilityConfigure" ability=label }}"
-                           aria-label="{{ localize "DND5E.AbilityConfigure" ability=label }}">
+                           data-tooltip="{{ localize "BSKR.AbilityConfigure" ability=label }}"
+                           aria-label="{{ localize "BSKR.AbilityConfigure" ability=label }}">
                             <i class="fas fa-cog"></i>
                         </a>
                         {{else}}
-                        {{ dnd5e-formatModifier mod }}
+                        {{ bskr-formatModifier mod }}
                         {{/if}}
                     </div>
                     <div class="score">
@@ -302,13 +302,13 @@
                         {{/if}}
                     </div>
                     <div class="save-tab saving-throw {{#unless @root.editable}}{{ @root.rollableClass }}{{/unless}}"
-                         {{#unless @root.editable}}data-tooltip="{{ localize "DND5E.SavingThrowRoll" ability=label }}"
-                         aria-label="{{ localize "DND5E.SavingThrowRoll" ability=label }}"{{/unless}}>
+                         {{#unless @root.editable}}data-tooltip="{{ localize "BSKR.SavingThrowRoll" ability=label }}"
+                         aria-label="{{ localize "BSKR.SavingThrowRoll" ability=label }}"{{/unless}}>
                         <proficiency-cycle type="ability" name="{{ concat "system.abilities." key ".proficient" }}"
                                            data-tooltip="{{ hover }}" aria-label="{{ localize hover }}"
                                            value="{{#if @root.editable}}{{ baseProf }}{{else}}{{ proficient }}{{/if}}"
                                            {{ disabled (not @root.editable) }}></proficiency-cycle>
-                        <span class="save">{{ dnd5e-formatModifier save.value }}</span>
+                        <span class="save">{{ bskr-formatModifier save.value }}</span>
                         <i class="fas fa-shield-heart" inert></i>
                     </div>
                 </div>
@@ -319,29 +319,29 @@
             <div class="bottom">
 
                 {{#if hasClasses}}
-                {{> "dnd5e.actor-classes" }}
+                {{> "bskr.actor-classes" }}
                 {{/if}}
 
                 {{#if (or hasLegendaries editable)}}
                 <div class="legendary">
                     {{#if editable}}
                     <label class="legact">
-                        <span class="label roboto-upper">{{ localize "DND5E.LegendaryAction.Label" }}</span>
+                        <span class="label roboto-upper">{{ localize "BSKR.LegendaryAction.Label" }}</span>
                         {{ numberInput source.resources.legact.max name="system.resources.legact.max" step=1 min=0 }}
                     </label>
                     <label class="legres">
-                        <span class="label roboto-upper">{{ localize "DND5E.LegendaryResistance.Label" }}</span>
+                        <span class="label roboto-upper">{{ localize "BSKR.LegendaryResistance.Label" }}</span>
                         {{ numberInput source.resources.legres.max name="system.resources.legres.max" step=1 min=0 }}
                     </label>
                     <label class="lair">
                         {{#if modernRules}}
-                        <span class="label roboto-upper">{{ localize "DND5E.LAIR.HasLair" }}</span>
+                        <span class="label roboto-upper">{{ localize "BSKR.LAIR.HasLair" }}</span>
                         <div class="spacer checkbox">
-                            <dnd5e-checkbox name="system.resources.lair.value"
-                                            {{ checked source.resources.lair.value }}></dnd5e-checkbox>
+                            <bskr-checkbox name="system.resources.lair.value"
+                                            {{ checked source.resources.lair.value }}></bskr-checkbox>
                         </div>
                         {{else}}
-                        <span class="label roboto-upper">{{ localize "DND5E.LAIR.Action.Label" }}</span>
+                        <span class="label roboto-upper">{{ localize "BSKR.LAIR.Action.Label" }}</span>
                         {{ numberInput source.resources.lair.initiative name="system.resources.lair.initiative"
                                        placeholder="—" step=1 min=0 }}
                         {{/if}}
@@ -349,7 +349,7 @@
                     {{else}}
                     {{#if system.resources.legact.max}}
                     <div class="legact">
-                        <span class="label roboto-upper">{{ localize "DND5E.LegendaryAction.Label" }}</span>
+                        <span class="label roboto-upper">{{ localize "BSKR.LegendaryAction.Label" }}</span>
                         <div class="pips" data-prop="system.resources.legact.value">
                             {{#each legact}}
                                 {{> pip }}
@@ -359,7 +359,7 @@
                     {{/if}}
                     {{#if system.resources.legres.max}}
                     <div class="legres">
-                        <span class="label roboto-upper">{{ localize "DND5E.LegendaryResistance.Label" }}</span>
+                        <span class="label roboto-upper">{{ localize "BSKR.LegendaryResistance.Label" }}</span>
                         <div class="pips" data-prop="system.resources.legres.value">
                             {{#each legres}}
                                 {{> pip }}
@@ -370,7 +370,7 @@
                     {{#if modernRules}}
                     {{#if system.resources.lair.value}}
                     <label class="lair">
-                        <span class="label roboto-upper">{{ localize "DND5E.LAIR.Inside" }}</span>
+                        <span class="label roboto-upper">{{ localize "BSKR.LAIR.Inside" }}</span>
                         <div class="spacer toggle">
                             <slide-toggle name="system.resources.lair.inside"
                                           {{ checked system.resources.lair.inside }}></slide-toggle>
@@ -379,7 +379,7 @@
                     {{/if}}
                     {{else if system.resources.lair.initiative}}
                     <label class="lair">
-                        <span class="label roboto-upper">{{ localize "DND5E.LAIR.Action.Label" }}</span>
+                        <span class="label roboto-upper">{{ localize "BSKR.LAIR.Action.Label" }}</span>
                         <span class="value">{{ system.resources.lair.initiative }}</span>
                     </label>
                     {{/if}}
@@ -419,7 +419,7 @@
                     {{!-- TODO: Allow clicking this to roll a hit die --}}
                     <h3 class="icon">
                         <i class="fa-solid fa-dice-d{{ denomination }}"></i>
-                        <span class="roboto-upper">{{ localize "DND5E.HitDice" }}</span>
+                        <span class="roboto-upper">{{ localize "BSKR.HitDice" }}</span>
                         <span class="counter">{{ value }} &sol; {{ max }}</span>
                     </h3>
                 </div>
@@ -427,17 +427,17 @@
                 {{/if}}
 
                 {{!-- Speed --}}
-                {{> "dnd5e.actor-trait-pills" values=speed key="speed" icon="fas fa-shoe-prints"
-                    label="DND5E.Speed" configAction="movement" }}
+                {{> "bskr.actor-trait-pills" values=speed key="speed" icon="fas fa-shoe-prints"
+                    label="BSKR.Speed" configAction="movement" }}
 
                 {{!-- Skills --}}
                 <div class="pills-group {{#unless skills}}empty{{/unless}}">
                     <h3 class="icon">
                         <i class="fas fa-briefcase"></i>
-                        <span class="roboto-upper">{{ localize "DND5E.Skills" }}</span>
+                        <span class="roboto-upper">{{ localize "BSKR.Skills" }}</span>
                         {{#if editable}}
-                        <a class="config-button" data-action="skills" data-tooltip="DND5E.SkillsConfig"
-                           aria-label="{{ localize "DND5E.SkillsConfig" }}">
+                        <a class="config-button" data-action="skills" data-tooltip="BSKR.SkillsConfig"
+                           aria-label="{{ localize "BSKR.SkillsConfig" }}">
                             <i class="fas fa-cog"></i>
                         </a>
                         {{/if}}
@@ -448,7 +448,7 @@
                             <a class="{{ @root.rollableClass }} skill-name" data-key="{{ @key }}">
                                 <span class="label">{{ label }}</span>
                                 <span class="separator">&vert;</span>
-                                <span class="value">{{ dnd5e-numberFormat total signDisplay="always" }}</span>
+                                <span class="value">{{ bskr-numberFormat total signDisplay="always" }}</span>
                             </a>
                         </li>
                         {{/each}}
@@ -456,45 +456,45 @@
                 </div>
 
                 {{!-- Senses --}}
-                {{> "dnd5e.actor-trait-pills" values=senses key="senses" icon="fas fa-eye"
-                    label="DND5E.Senses" configAction="senses" }}
+                {{> "bskr.actor-trait-pills" values=senses key="senses" icon="fas fa-eye"
+                    label="BSKR.Senses" configAction="senses" }}
 
                 {{!-- Resistances --}}
-                {{> "dnd5e.actor-trait-pills" values=traits.dr key="dr" color="green" icon="fas fa-shield-halved"
-                    label="DND5E.Resistances" }}
+                {{> "bskr.actor-trait-pills" values=traits.dr key="dr" color="green" icon="fas fa-shield-halved"
+                    label="BSKR.Resistances" }}
 
                 {{!-- Immunities --}}
                 {{#if editable}}
-                    {{> "dnd5e.actor-trait-pills" values=traits.di key="di" color="green" icon="fas fa-shield"
-                        label="DND5E.DamImm" }}
+                    {{> "bskr.actor-trait-pills" values=traits.di key="di" color="green" icon="fas fa-shield"
+                        label="BSKR.DamImm" }}
                 {{else}}
-                    {{> "dnd5e.actor-trait-pills" values=traits.di key="di" color="green" icon="fas fa-shield"
-                        label="DND5E.Immunities" }}
+                    {{> "bskr.actor-trait-pills" values=traits.di key="di" color="green" icon="fas fa-shield"
+                        label="BSKR.Immunities" }}
                 {{/if}}
-                {{> "dnd5e.actor-trait-pills" values=traits.ci key="ci" color="green" svg="rosa-shield"
-                    label="DND5E.ConImm" }}
+                {{> "bskr.actor-trait-pills" values=traits.ci key="ci" color="green" svg="rosa-shield"
+                    label="BSKR.ConImm" }}
 
                 {{!-- Vulnerabilities --}}
-                {{> "dnd5e.actor-trait-pills" values=traits.dv key="dv" color="maroon" icon="fas fa-heart-crack"
-                    label="DND5E.Vulnerabilities" }}
+                {{> "bskr.actor-trait-pills" values=traits.dv key="dv" color="maroon" icon="fas fa-heart-crack"
+                    label="BSKR.Vulnerabilities" }}
 
                 {{!-- Damage Modification --}}
-                {{> "dnd5e.actor-trait-pills" values=traits.dm key="dm" icon="fas fa-heart-circle-plus"
-                    label="DND5E.DamageModification.Label" }}
+                {{> "bskr.actor-trait-pills" values=traits.dm key="dm" icon="fas fa-heart-circle-plus"
+                    label="BSKR.DamageModification.Label" }}
 
                 {{!-- Languages --}}
-                {{> "dnd5e.actor-trait-pills" values=traits.languages key="languages" icon="fas fa-flag"
-                    label="DND5E.Languages" }}
+                {{> "bskr.actor-trait-pills" values=traits.languages key="languages" icon="fas fa-flag"
+                    label="BSKR.Languages" }}
 
                 {{!-- Habitat --}}
                 {{#if (or editable habitat)}}
                 <div class="pills-group {{#unless habitat}}empty{{/unless}}">
                     <h3 class="icon">
                         <i class="fa-solid fa-mountain-sun" inert></i>
-                        <span class="roboto-upper">{{ localize "DND5E.Habitat.Configuration.Label" }}</span>
+                        <span class="roboto-upper">{{ localize "BSKR.Habitat.Configuration.Label" }}</span>
                         {{#if editable}}
-                        <a class="config-button" data-action="habitat" data-tooltip="DND5E.Habitat.Configuration.Title"
-                           aria-label="{{ localize "DND5E.Habitat.Configuration.Title" }}">
+                        <a class="config-button" data-action="habitat" data-tooltip="BSKR.Habitat.Configuration.Title"
+                           aria-label="{{ localize "BSKR.Habitat.Configuration.Title" }}">
                             <i class="fa-solid fa-cog" inert></i>
                         </a>
                         {{/if}}
@@ -515,11 +515,11 @@
                 <div class="pills-group {{#unless treasure}}empty{{/unless}}">
                     <h3 class="icon">
                         <i class="fa-solid fa-gem" inert></i>
-                        <span class="roboto-upper">{{ localize "DND5E.Treasure.Configuration.Label" }}</span>
+                        <span class="roboto-upper">{{ localize "BSKR.Treasure.Configuration.Label" }}</span>
                         {{#if editable}}
                         <a class="config-button" data-action="treasure"
-                           data-tooltip="DND5E.Treasure.Configuration.Title"
-                           aria-label="{{ localize "DND5E.Treasure.Configuration.Title" }}">
+                           data-tooltip="BSKR.Treasure.Configuration.Title"
+                           aria-label="{{ localize "BSKR.Treasure.Configuration.Title" }}">
                             <i class="fa-solid fa-cog" inert></i>
                         </a>
                         {{/if}}
@@ -541,30 +541,30 @@
 
                 {{!-- Features --}}
                 <div class="tab features" data-group="primary" data-tab="features">
-                    {{> "dnd5e.creature-features" sections=features.sections filters=features.filters }}
+                    {{> "bskr.creature-features" sections=features.sections filters=features.filters }}
                 </div>
 
                 {{!-- Inventory --}}
                 <div class="tab inventory" data-group="primary" data-tab="inventory">
-                    {{> "dnd5e.inventory2" sections=inventory }}
+                    {{> "bskr.inventory2" sections=inventory }}
                 </div>
 
                 {{!-- Spells --}}
                 <div class="tab spells" data-group="primary" data-tab="spells">
-                    {{> "dnd5e.creature-spells" }}
+                    {{> "bskr.creature-spells" }}
                 </div>
 
                 {{!-- Effects --}}
                 <div class="tab effects" data-group="primary" data-tab="effects">
-                    {{> "dnd5e.active-effects2" }}
+                    {{> "bskr.active-effects2" }}
                 </div>
 
                 {{!-- Biography --}}
-                {{~> "dnd5e.npc-biography" ~}}
+                {{~> "bskr.npc-biography" ~}}
 
                 {{!-- Special Traits --}}
                 <div class="tab special-traits" data-group="primary" data-tab="special-traits">
-                    {{~> "dnd5e.creature-special-traits" ~}}
+                    {{~> "bskr.creature-special-traits" ~}}
                 </div>
 
             </section>
@@ -580,6 +580,6 @@
     </button>
 
     {{!-- Warnings --}}
-    {{> "dnd5e.actor-warnings-dialog" }}
+    {{> "bskr.actor-warnings-dialog" }}
 
 </form>

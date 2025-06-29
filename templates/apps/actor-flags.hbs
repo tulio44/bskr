@@ -1,18 +1,18 @@
 <form class="{{cssClass}}" autocomplete="off">
     <section class="form-body">
-	    <p class="notes">{{localize "DND5E.FlagsInstructions"}}</p>
+	    <p class="notes">{{localize "BSKR.FlagsInstructions"}}</p>
 
         <h3 class="form-header">{{localize "TYPES.Item.class"}}</h3>
         <div class="form-group">
-            <label>{{localize "DND5E.ClassMakeOriginal"}}</label>
+            <label>{{localize "BSKR.ClassMakeOriginal"}}</label>
             <select name="system.details.originalClass">
               {{selectOptions classes selected=actor.system.details.originalClass}}
             </select>
-            <p class="notes">{{localize "DND5E.ClassMakeOriginalHint"}}</p>
+            <p class="notes">{{localize "BSKR.ClassMakeOriginalHint"}}</p>
         </div>
 
         {{#if npc}}
-        <h3 class="form-header">{{ localize "DND5E.NPC.Label" }}</h3>
+        <h3 class="form-header">{{ localize "BSKR.NPC.Label" }}</h3>
         {{#with npc.important}}
         {{ formField field name=name value=value localize=true }}
         {{/with}}
@@ -42,8 +42,8 @@
         {{/each}}
         {{/each}}
 
-        <h3 class="form-header">{{localize "DND5E.BONUSES.FIELDS.bonuses.label"}}</h3>
-        <p class="notes">{{localize "DND5E.BONUSES.FIELDS.bonuses.hint"}}</p>
+        <h3 class="form-header">{{localize "BSKR.BONUSES.FIELDS.bonuses.label"}}</h3>
+        <p class="notes">{{localize "BSKR.BONUSES.FIELDS.bonuses.hint"}}</p>
         {{#each bonuses as |b|}}
         <div class="form-group">
             <label>{{localize b.label}}</label>
@@ -54,7 +54,7 @@
 
     <footer class="form-footer">
         <button type="submit">
-            <i class="far fa-save"></i> {{localize "DND5E.FlagsSave"}}
+            <i class="far fa-save"></i> {{localize "BSKR.FlagsSave"}}
         </button>
     </footer>
 </form>

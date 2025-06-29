@@ -8,33 +8,33 @@
 
                 <h3 class="item-name">
                     {{#if (eq @key "0")}}
-                    {{ localize "DND5E.AdvancementLevelAnyHeader" }}
+                    {{ localize "BSKR.AdvancementLevelAnyHeader" }}
                     {{else if (eq @key "unconfigured")}}
-                    {{ localize "DND5E.AdvancementLevelNoneHeader" }}
+                    {{ localize "BSKR.AdvancementLevelNoneHeader" }}
                     {{else}}
-                    {{ localize "DND5E.AdvancementLevelHeader" level=@key }}
+                    {{ localize "BSKR.AdvancementLevelHeader" level=@key }}
                     {{/if}}
                 </h3>
 
-                <div class="item-header advancement-value">{{ localize "DND5E.Value" }}</div>
+                <div class="item-header advancement-value">{{ localize "BSKR.Value" }}</div>
 
                 <div class="item-header item-controls">
                     {{#if (and @root.editable configured (ne @key "unconfigured"))}}
                     <a class="item-control config-button" data-action="modify-choices"
-                       data-tooltip="DND5E.AdvancementModifyChoices"
-                       aria-label="{{ localize "DND5E.AdvancementModifyChoices" }}">
+                       data-tooltip="BSKR.AdvancementModifyChoices"
+                       aria-label="{{ localize "BSKR.AdvancementModifyChoices" }}">
                         <i class="fas fa-cog"></i>
                     </a>
                     {{else}}
 
                     {{#if (eq configured "full")}}
-                    <a class="info-control" data-tooltip="DND5E.AdvancementConfiguredComplete"
-                       aria-label="{{ localize "DND5E.AdvancementConfiguredComplete" }}">
+                    <a class="info-control" data-tooltip="BSKR.AdvancementConfiguredComplete"
+                       aria-label="{{ localize "BSKR.AdvancementConfiguredComplete" }}">
                         <i class="fas fa-check-circle"></i>
                     </a>
                     {{else if (eq configured "partial")}}
-                    <a class="info-control" data-tooltip="DND5E.AdvancementConfiguredIncomplete"
-                       aria-label="{{ localize "DND5E.AdvancementConfiguredIncomplete" }}">
+                    <a class="info-control" data-tooltip="BSKR.AdvancementConfiguredIncomplete"
+                       aria-label="{{ localize "BSKR.AdvancementConfiguredIncomplete" }}">
                         <i class="fas fa-exclamation-triangle"></i>
                     </a>
                     {{/if}}
@@ -61,7 +61,7 @@
                             <div class="tags">
                                 {{#each tags}}
                                 <span data-tooltip="{{ label }}" aria-label="{{ localize label }}">
-                                    <dnd5e-icon src="{{ icon }}"></dnd5e-icon>
+                                    <bskr-icon src="{{ icon }}"></bskr-icon>
                                 </span>
                                 {{/each}}
                             </div>
@@ -78,22 +78,22 @@
                             {{#if @root.editable}}
                             {{!-- Editing --}}
                             <a class="item-control item-action" data-action="edit"
-                               data-tooltip="DND5E.ADVANCEMENT.Action.Edit"
-                               aria-label="{{ localize "DND5E.DND5E.ADVANCEMENT.Action.Edit" }}">
+                               data-tooltip="BSKR.ADVANCEMENT.Action.Edit"
+                               aria-label="{{ localize "BSKR.BSKR.ADVANCEMENT.Action.Edit" }}">
                                 <i class="fas fa-pen-to-square" inert></i>
                             </a>
 
                             {{!-- Deleting --}}
                             <a class="item-control item-action" data-action="delete"
-                               data-tooltip="DND5E.ADVANCEMENT.Action.Delete"
-                               aria-label="{{ localize "DND5E.ADVANCEMENT.Action.Delete" }}">
+                               data-tooltip="BSKR.ADVANCEMENT.Action.Delete"
+                               aria-label="{{ localize "BSKR.ADVANCEMENT.Action.Delete" }}">
                                 <i class="fas fa-trash" inert></i>
                             </a>
                             {{/if}}
 
                             {{!-- Context Menu --}}
                             <a class="item-control interface-only" data-context-menu
-                               aria-label="{{ localize "DND5E.AdditionalControls" }}">
+                               aria-label="{{ localize "BSKR.AdditionalControls" }}">
                                 <i class="fas fa-ellipsis-vertical" inert></i>
                             </a>
 

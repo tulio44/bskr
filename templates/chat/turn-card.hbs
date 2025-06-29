@@ -1,13 +1,13 @@
-<div class="dnd5e2 chat-card turn-card">
+<div class="bskr2 chat-card turn-card">
     {{#if actor}}
 
     {{!-- Deltas --}}
-    {{#if deltas.length}}{{> "dnd5e.card-deltas" }}{{/if}}
+    {{#if deltas.length}}{{> "bskr.card-deltas" }}{{/if}}
 
     {{!-- Actions --}}
-    {{#if activities.length}}{{> "dnd5e.card-activities" }}{{/if}}
+    {{#if activities.length}}{{> "bskr.card-activities" }}{{/if}}
 
     {{else}}
-    <p>{{ localize "DND5E.CHATMESSAGE.TURN.NoCombatant" }}</p>
+    <p>{{ localize "BSKR.CHATMESSAGE.TURN.NoCombatant" }}</p>
     {{/if}}
 </div>

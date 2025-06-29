@@ -8,8 +8,8 @@
                     {{ selectOptions validTypes selected=entry.type localize=true }}
                 </select>
                 <button type="button" class="unbutton" data-action="delete-entry"
-                        data-tooltip="DND5E.StartingEquipment.Action.RemoveEntry"
-                        aria-label="{{ localize 'DND5E.StartingEquipment.Action.RemoveEntry' }}">
+                        data-tooltip="BSKR.StartingEquipment.Action.RemoveEntry"
+                        aria-label="{{ localize 'BSKR.StartingEquipment.Action.RemoveEntry' }}">
                     <i class="fa-solid fa-trash fa-fw" inert></i>
                 </button>
             </div>
@@ -21,10 +21,10 @@
                    placeholder=1 step=1 min=1 }}
                 {{#if (eq entry.type "linked")}}
                 {{#if linked}}
-                {{{ dnd5e-linkForUuid entry.key }}}
+                {{{ bskr-linkForUuid entry.key }}}
                 {{else}}
                 <div class="drop-area">
-                    {{ localize "DND5E.StartingEquipment.DropHint" }}
+                    {{ localize "BSKR.StartingEquipment.DropHint" }}
                 </div>
                 {{/if}}
                 <input type="hidden" name="startingEquipment.{{ id }}.key" value="{{ entry.key }}">
@@ -36,9 +36,9 @@
                 {{/if}}
                 {{#if showRequireProficiency}}
                 <label class="flexrow require-proficiency">
-                    <dnd5e-checkbox name="startingEquipment.{{ id }}.requiresProficiency"
-                           {{ checked entry.requiresProficiency }}></dnd5e-checkbox>
-                    {{ localize "DND5E.StartingEquipment.RequireProficiency" }}
+                    <bskr-checkbox name="startingEquipment.{{ id }}.requiresProficiency"
+                           {{ checked entry.requiresProficiency }}></bskr-checkbox>
+                    {{ localize "BSKR.StartingEquipment.RequireProficiency" }}
                 </label>
                 {{else}}
                 <input type="hidden" name="startingEquipment.{{ id }}.requiresProficiency"
@@ -51,10 +51,10 @@
             <input type="hidden" name="startingEquipment.{{ id }}.sort" value="{{ entry.sort }}" data-dtype="Number">
         </li>
         {{/each}}
-        <li class="dnd5e2" data-depth="{{ depth }}">
+        <li class="bskr2" data-depth="{{ depth }}">
             <button type="button" data-action="add-entry">
                 <i class="fa-solid fa-plus" inert></i>
-                {{ localize "DND5E.StartingEquipment.Action.AddEntry" }}
+                {{ localize "BSKR.StartingEquipment.Action.AddEntry" }}
             </button>
         </li>
     </ul>

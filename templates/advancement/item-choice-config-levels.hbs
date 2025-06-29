@@ -1,16 +1,16 @@
 <fieldset class="card levels">
-    <legend>{{ localize "DND5E.ADVANCEMENT.ItemChoice.FIELDS.choices.label" }}</legend>
+    <legend>{{ localize "BSKR.ADVANCEMENT.ItemChoice.FIELDS.choices.label" }}</legend>
     <div class="header">
         <span class="level-header">
-            {{ localize "DND5E.AbbreviationLevel" }}
+            {{ localize "BSKR.AbbreviationLevel" }}
         </span>
         <span class="count-header">
-            {{ localize "DND5E.ADVANCEMENT.ItemChoice.FIELDS.choices.FIELDS.count.label" }}
+            {{ localize "BSKR.ADVANCEMENT.ItemChoice.FIELDS.choices.FIELDS.count.label" }}
         </span>
         <span class="replacement-header">
             <i class="fa-solid fa-shuffle"
-               data-tooltip="DND5E.ADVANCEMENT.ItemChoice.FIELDS.choices.FIELDS.replacement.label"
-               aria-label="{{ localize 'DND5E.ADVANCEMENT.ItemChoice.FIELDS.choices.FIELDS.replacement.label' }}"></i>
+               data-tooltip="BSKR.ADVANCEMENT.ItemChoice.FIELDS.choices.FIELDS.replacement.label"
+               aria-label="{{ localize 'BSKR.ADVANCEMENT.ItemChoice.FIELDS.choices.FIELDS.replacement.label' }}"></i>
         </span>
     </div>
     <ol class="levels-list unlist">
@@ -22,8 +22,8 @@
                        min="1" step="1">
             </div>
             <div class="level-replacement">
-                <dnd5e-checkbox name="configuration.choices.{{ @key }}.replacement"
-                                {{ checked replacement }}></dnd5e-checkbox>
+                <bskr-checkbox name="configuration.choices.{{ @key }}.replacement"
+                                {{ checked replacement }}></bskr-checkbox>
             </div>
         </li>
         {{/each}}

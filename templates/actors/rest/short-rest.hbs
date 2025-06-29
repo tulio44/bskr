@@ -1,11 +1,11 @@
 <section class="flexcol">
     <div class="note info">
-        {{ localize (ifThen isGroup "DND5E.REST.Short.Hint.Group" "DND5E.REST.Short.Hint.Normal") }}
+        {{ localize (ifThen isGroup "BSKR.REST.Short.Hint.Group" "BSKR.REST.Short.Hint.Normal") }}
     </div>
 
     {{#if fields.length}}
     <fieldset>
-        <legend>{{ localize "DND5E.REST.Configuration" }}</legend>
+        <legend>{{ localize "BSKR.REST.Configuration" }}</legend>
         {{#each fields}}
         {{ formField field name=name value=value input=input options=options rootId=../partId }}
         {{/each}}
@@ -15,13 +15,13 @@
     {{#if hitDice}}
     {{#if hitDice.canRoll}}
     <fieldset>
-        <legend>{{ localize "DND5E.HitDice" }}</legend>
+        <legend>{{ localize "BSKR.HitDice" }}</legend>
         <div class="form-fields">
             <select name="denom">
                 {{ selectOptions hitDice.options selected=hitDice.denomination }}
             </select>
-            <button type="button" class="dice-button" data-action="rollHitDie" data-tooltip="DND5E.Roll"
-                    aria-label="{{ localize 'DND5E.Roll' }}">
+            <button type="button" class="dice-button" data-action="rollHitDie" data-tooltip="BSKR.Roll"
+                    aria-label="{{ localize 'BSKR.Roll' }}">
                 <i class="fa-solid fa-dice-d20" inert></i>
             </button>
         </div>
@@ -29,7 +29,7 @@
     </fieldset>
     {{else}}
     <div class="note warn">
-        {{ localize "DND5E.REST.HitDice.None" }}
+        {{ localize "BSKR.REST.HitDice.None" }}
     </div>
     {{/if}}
     {{/if}}

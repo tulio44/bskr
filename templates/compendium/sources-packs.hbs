@@ -6,8 +6,8 @@
         {{#if (gt entries.length 1)}}
         <li class="all">
             <label class="checkbox">
-                <dnd5e-checkbox name="all-{{ type }}" {{ checked checked }} data-type="pack"
-                                {{#if indeterminate}}indeterminate{{/if}}></dnd5e-checkbox>
+                <bskr-checkbox name="all-{{ type }}" {{ checked checked }} data-type="pack"
+                                {{#if indeterminate}}indeterminate{{/if}}></bskr-checkbox>
                 <span class="title">{{ localize "all" }}</span>
             </label>
         </li>
@@ -15,7 +15,7 @@
         {{#each entries}}
         <li>
             <label class="checkbox">
-                <dnd5e-checkbox name="{{ id }}" {{ checked checked }} data-type="pack"></dnd5e-checkbox>
+                <bskr-checkbox name="{{ id }}" {{ checked checked }} data-type="pack"></bskr-checkbox>
                 <span class="title">{{ title }}</span>
             </label>
         </li>
