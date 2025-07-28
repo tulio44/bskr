@@ -189,7 +189,7 @@
         {
             "type": "setup",
             "url": "systems/dnd5e/ui/official/dnd5e-repo.jpg",
-            "thumbnail": "systems/dnd5e/ui/official/dnd5e-thumbnail.jpg"
+            "thumbnail": "systems/bskr/ui/official/bskr-thumbmail.jpg"
         }
     ],
     "socket": true,
@@ -198,7 +198,7 @@
         "units": "ft"
     },
     "primaryTokenAttribute": "attributes.hp",
-    "background": "systems/dnd5e/ui/official/dnd5e-background.webp",
+    "background": "systems/bskr/ui/official/bskr-background.webp",
     "flags": {
         "dnd5e": {
             "sourceBooks": {
