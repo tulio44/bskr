@@ -1,0 +1,28 @@
+<form id="{{ appId }}" data-level="{{ level }}" data-id="{{ advancement.id }}" data-type="{{ type }}">
+    <h3>{{{ title }}}</h3>
+    {{#if hint}}<p>{{ hint }}</p>{{/if}}
+
+    {{#if isFirstClassLevel}}
+
+    <div>
+        {{{ localize "BSKR.ADVANCEMENT.FuryPoints.MaxAtFirstLevel" max=dieValue }}}
+        <input type="hidden" name="useMax" value="true" data-dtype="Boolean">
+    </div>
+
+    {{else}}
+
+    <div class="rolls">
+        <label class="average-label flexrow">
+            <span>{{ localize "BSKR.ADVANCEMENT.FuryPoints.TakeAverage" }}</span>
+            <bskr-checkbox class="average-checkbox" name="useAverage" {{ checked data.useAverage }}></bskr-checkbox>
+        </label>
+        <input class="roll-result" type="number" name="value" value="{{ data.value }}" {{ disabled data.useAverage }}>
+        <button class="roll-button dice-button" type="button" name="roll" {{ disabled data.useAverage }}
+                data-tooltip="{{ localize "BSKR.ADVANCEMENT.FuryPoints.Action.Roll" die=furyDie }}"
+                aria-label="{{ localize "BSKR.ADVANCEMENT.FuryPoints.Action.Roll" die=furyDie }}">
+            <i class="fas fa-dice-{{ furyDie }}" inert></i>
+        </button>
+    </div>
+
+    {{/if}}
+</form>

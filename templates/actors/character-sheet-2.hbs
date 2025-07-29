@@ -1,32 +1,31 @@
 {{!-- Components --}}
 {{#*inline "pip"}}
-    <button type="button" class="{{ classes }}" data-n="{{ n }}" data-tooltip="{{ tooltip }}" aria-label="{{ label }}"
-            aria-pressed="{{ filled }}"></button>
+<button type="button" class="{{ classes }}" data-n="{{ n }}" data-tooltip="{{ tooltip }}" aria-label="{{ label }}"
+    aria-pressed="{{ filled }}"></button>
 {{/inline}}
 
 {{#*inline "ability-score"}}
-    <div class="ability-score {{#if flipped}}flipped{{/if}}" data-ability="{{ key }}">
-        <a class="label {{ @root.rollableClass }} ability-check">{{ abbr }}</a>
-        <div class="mod">
-            {{#if @root.editable}}
-            <a class="config-button" data-action="ability"
-               data-tooltip="{{ localize "BSKR.AbilityConfigure" ability=label }}"
-               aria-label="{{ localize "BSKR.AbilityConfigure" ability=label }}">
-                <i class="fas fa-cog"></i>
-            </a>
-            {{else}}
-            {{ bskr-formatModifier mod }}
-            {{/if}}
-        </div>
-        <div class="score">
-            {{#if @root.editable}}
-            <input type="text" name="system.abilities.{{ key }}.value" value="{{ baseValue }}" placeholder="10"
-                   data-dtype="Number" class="uninput">
-            {{else}}
-            {{ value }}
-            {{/if}}
-        </div>
+<div class="ability-score {{#if flipped}}flipped{{/if}}" data-ability="{{ key }}">
+    <a class="label {{ @root.rollableClass }} ability-check">{{ abbr }}</a>
+    <div class="mod">
+        {{#if @root.editable}}
+        <a class="config-button" data-action="ability" data-tooltip="{{ localize " BSKR.AbilityConfigure" ability=label
+            }}" aria-label="{{ localize " BSKR.AbilityConfigure" ability=label }}">
+            <i class="fas fa-cog"></i>
+        </a>
+        {{else}}
+        {{ bskr-formatModifier mod }}
+        {{/if}}
     </div>
+    <div class="score">
+        {{#if @root.editable}}
+        <input type="text" name="system.abilities.{{ key }}.value" value="{{ baseValue }}" placeholder="10"
+            data-dtype="Number" class="uninput">
+        {{else}}
+        {{ value }}
+        {{/if}}
+    </div>
+</div>
 {{/inline}}
 
 <form class="{{ cssClass }} flexcol" autocomplete="off">
@@ -52,14 +51,14 @@
         <div class="right">
 
             {{!-- Level --}}
-            <div class="level-badge badge" aria-label="{{ localize "BSKR.LevelNumber" level=system.details.level }}">
+            <div class="level-badge badge" aria-label="{{ localize " BSKR.LevelNumber" level=system.details.level }}">
                 {{ system.details.level }}
             </div>
 
             {{!-- Inspiration --}}
-            <button type="button" class="inspiration unbutton" data-action="toggleInspiration"
-                    aria-label="{{ localize "BSKR.Inspiration" }}" data-tooltip="BSKR.Inspiration"
-                    aria-pressed="{{ system.attributes.inspiration }}"></button>
+            <button type="button" class="inspiration unbutton" data-action="toggleInspiration" aria-label="{{ localize "
+                BSKR.Inspiration" }}" data-tooltip="BSKR.Inspiration"
+                aria-pressed="{{ system.attributes.inspiration }}"></button>
 
             {{!-- Epic Boons --}}
             {{#if system.details.xp.boonsEarned}}
@@ -73,11 +72,11 @@
                 {{#if actor.isOwner}}
                 <div class="sheet-header-buttons">
                     <button type="button" class="short-rest gold-button" data-tooltip="BSKR.REST.Short.Label"
-                            aria-label="{{ localize "BSKR.REST.Short.Label" }}">
+                        aria-label="{{ localize " BSKR.REST.Short.Label" }}">
                         <i class="fas fa-utensils"></i>
                     </button>
                     <button type="button" class="long-rest gold-button" data-tooltip="BSKR.REST.Long.Label"
-                            aria-label="{{ localize "BSKR.REST.Long.Label" }}">
+                        aria-label="{{ localize " BSKR.REST.Long.Label" }}">
                         <i class="fas fa-campground"></i>
                     </button>
                 </div>
@@ -89,7 +88,7 @@
                 <div class="xp-label roboto-upper">
                     {{#if @root.editable}}
                     <input type="text" name="system.details.xp.value" class="value uninput" data-dtype="Number"
-                           value="{{ value }}">
+                        value="{{ value }}">
                     {{else}}
                     <span class="value">{{ bskr-numberFormat value }}</span>
                     {{/if}}
@@ -98,9 +97,9 @@
                     <span class="max">{{ bskr-numberFormat max }}</span>
                     {{/unless}}
                 </div>
-                <div class="xp-bar" role="meter" aria-label="{{ localize "BSKR.ExperiencePoints.Progress" }}"
-                     aria-valuemin="{{ min }}" aria-valuenow="{{ value }}" aria-valuemax="{{ max }}"
-                     aria-valuetext="{{ pct }}%" style="--bar-percentage: {{ pct }}%;"></div>
+                <div class="xp-bar" role="meter" aria-label="{{ localize " BSKR.ExperiencePoints.Progress" }}"
+                    aria-valuemin="{{ min }}" aria-valuenow="{{ value }}" aria-valuemax="{{ max }}"
+                    aria-valuetext="{{ pct }}%" style="--bar-percentage: {{ pct }}%;"></div>
                 {{/with}}
                 {{/unless}}
             </div>
@@ -121,11 +120,9 @@
 
                     {{!-- Collapser --}}
                     <button type="button" class="sidebar-collapser collapser card-tab vertical unbutton interface-only"
-                        {{#if sidebarCollapsed}}
-                        data-tooltip="JOURNAL.ViewExpand" aria-label="{{ localize "JOURNAL.ViewExpand" }}"
-                        {{else}}
-                        data-tooltip="JOURNAL.ViewCollapse" aria-label="{{ localize "JOURNAL.ViewCollapse" }}"
-                        {{/if}}>
+                        {{#if sidebarCollapsed}} data-tooltip="JOURNAL.ViewExpand" aria-label="{{ localize "
+                        JOURNAL.ViewExpand" }}" {{else}} data-tooltip="JOURNAL.ViewCollapse" aria-label="{{ localize "
+                        JOURNAL.ViewCollapse" }}" {{/if}}>
                         <i class="fas fa-caret-{{#if sidebarCollapsed}}right{{else}}left{{/if}}"></i>
                     </button>
 
@@ -144,8 +141,8 @@
                         </label>
                         {{/if}}
 
-                        <img src="{{ portrait.src }}" alt="{{ actor.name }}"
-                             {{#if (and editable portrait.path)}}data-edit="{{ portrait.path }}"{{/if}}>
+                        <img src="{{ portrait.src }}" alt="{{ actor.name }}" {{#if (and editable
+                            portrait.path)}}data-edit="{{ portrait.path }}" {{/if}}>
                     </div>
 
                     {{!-- Stats --}}
@@ -157,21 +154,21 @@
                             {{#if exhaustion}}
                             <div class="pips" data-prop="system.attributes.exhaustion">
                                 {{#each exhaustion.left}}
-                                    {{> pip }}
+                                {{> pip }}
                                 {{/each}}
                             </div>
                             {{/if}}
 
                             {{!-- AC --}}
-                            <div class="ac-badge badge" aria-label="{{ localize "BSKR.ArmorClass" }}">
+                            <div class="ac-badge badge" aria-label="{{ localize " BSKR.ArmorClass" }}">
                                 {{#if editable}}
                                 <a class="config-button" data-action="armor" data-tooltip="BSKR.ArmorConfig"
-                                   aria-label="{{ localize "BSKR.ArmorConfig" }}">
+                                    aria-label="{{ localize " BSKR.ArmorConfig" }}">
                                     <i class="fas fa-cog"></i>
                                 </a>
                                 {{else}}
                                 <div data-attribution="attributes.ac" data-attribution-caption="BSKR.ArmorClass"
-                                     data-tooltip-direction="DOWN">
+                                    data-tooltip-direction="DOWN">
                                     {{ system.attributes.ac.value }}
                                 </div>
                                 {{/if}}
@@ -180,7 +177,7 @@
                             {{#if exhaustion}}
                             <div class="pips" data-prop="system.attributes.exhaustion">
                                 {{#each exhaustion.right}}
-                                    {{> pip }}
+                                {{> pip }}
                                 {{/each}}
                             </div>
                             {{/if}}
@@ -190,13 +187,13 @@
                         <div class="lozenges">
 
                             {{!-- Initiative --}}
-                            <div class="lozenge {{#unless editable}}{{ rollableClass }}{{/unless}}"
-                                 {{#unless editable}}data-action="rollInitiative"{{/unless}}>
+                            <div class="lozenge {{#unless editable}}{{ rollableClass }}{{/unless}}" {{#unless
+                                editable}}data-action="rollInitiative" {{/unless}}>
                                 <div class="value">
                                     {{#if editable}}
                                     <a class="config-button" data-action="initiative"
-                                       data-tooltip="BSKR.InitiativeConfig"
-                                       aria-label="{{ localize "BSKR.InitiativeConfig" }}">
+                                        data-tooltip="BSKR.InitiativeConfig" aria-label="{{ localize "
+                                        BSKR.InitiativeConfig" }}">
                                         <i class="fas fa-cog"></i>
                                     </a>
                                     {{else}}
@@ -237,7 +234,7 @@
                                 <span>{{ localize "BSKR.HitPoints" }}</span>
                                 {{#if editable}}
                                 <a class="config-button" data-action="hitPoints" data-tooltip="BSKR.HitPointsConfig"
-                                   aria-label="{{ localize "BSKR.HitPointsConfig" }}">
+                                    aria-label="{{ localize " BSKR.HitPointsConfig" }}">
                                     <i class="fas fa-cog"></i>
                                 </a>
                                 {{/if}}
@@ -246,9 +243,9 @@
                             <div class="meter sectioned hit-points">
                                 <div class="progress hit-points
                                      {{~#if (gt tempmax 0)}} temp-positive
-                                     {{~else if (lt tempmax 0)}} temp-negative{{/if}}"
-                                     role="meter" aria-valuemin="0" aria-valuenow="{{ value }}"
-                                     aria-valuemax="{{ max }}" style="--bar-percentage: {{ pct }}%">
+                                     {{~else if (lt tempmax 0)}} temp-negative{{/if}}" role="meter" aria-valuemin="0"
+                                    aria-valuenow="{{ value }}" aria-valuemax="{{ max }}"
+                                    style="--bar-percentage: {{ pct }}%">
                                     <div class="label">
                                         <span class="value">{{ value }}</span>
                                         <span class="separator">&sol;</span>
@@ -258,12 +255,44 @@
                                         {{/if}}
                                     </div>
                                     <input type="text" name="system.attributes.hp.value" data-dtype="Number"
-                                           placeholder="0" value="{{ value }}" hidden>
+                                        placeholder="0" value="{{ value }}" hidden>
                                 </div>
                                 <div class="tmp">
                                     <input type="text" name="system.attributes.hp.temp" data-dtype="Number"
-                                           placeholder="{{ localize "BSKR.TMP" }}"
-                                           value="{{#if temp}}{{ temp }}{{/if}}">
+                                        placeholder="{{ localize " BSKR.TMP" }}" value="{{#if temp}}{{ temp }}{{/if}}">
+                                </div>
+                            </div>
+                            {{/with}}
+                        </div>
+
+                        {{!-- Fury Points --}}
+                        <div class="meter-group">
+                            <div class="label roboto-condensed-upper">
+                                <span>{{ localize "BSKR.FuryPoints" }}</span>
+                                {{#if editable}}
+                                <a class="config-button" data-action="furyPoints" data-tooltip="BSKR.FuryPointsConfig"
+                                    aria-label="{{ localize " BSKR.FuryPointsConfig" }}">
+                                    <i class="fas fa-cog"></i>
+                                </a>
+                                {{/if}}
+                            </div>
+                            {{#with system.attributes.hp}}
+                            <div class="meter sectioned fury-points">
+                                <div class="progress fury-points
+                                                                                     {{~#if (gt tempmax 0)}} temp-positive
+                                                                                     {{~else if (lt tempmax 0)}} temp-negative{{/if}}"
+                                    role="meter" aria-valuemin="0" aria-valuenow="{{ value }}" aria-valuemax="{{ max }}"
+                                    style="--bar-percentage: {{ pct }}%">
+                                    <div class="label">
+                                        <span class="value">{{ value }}</span>
+                                        <span class="separator">&sol;</span>
+                                        <span class="max">{{ effectiveMax }}</span>
+                                        {{#if tempmax}}
+                                        <span class="bonus">{{bskr-numberFormat tempmax signDisplay="always"}}</span>
+                                        {{/if}}
+                                    </div>
+                                    <input type="text" name="system.attributes.fp.value" data-dtype="Number"
+                                        placeholder="0" value="{{ value }}" hidden>
                                 </div>
                             </div>
                             {{/with}}
@@ -276,14 +305,14 @@
                                 <span>{{ localize "BSKR.HitDice" }}</span>
                                 {{#if @root.editable}}
                                 <a class="config-button" data-action="hitDice" data-tooltip="BSKR.HitDiceConfig"
-                                   aria-label="{{ localize "BSKR.HitDiceConfig" }}">
+                                    aria-label="{{ localize " BSKR.HitDiceConfig" }}">
                                     <i class="fas fa-cog"></i>
                                 </a>
                                 {{/if}}
                             </div>
                             <div class="meter hit-dice progress" role="meter" aria-valuemin="0"
-                                 aria-valuenow="{{ value }}" aria-valuemax="{{ max }}"
-                                 style="--bar-percentage: {{ pct }}%">
+                                aria-valuenow="{{ value }}" aria-valuemax="{{ max }}"
+                                style="--bar-percentage: {{ pct }}%">
                                 <div class="label">
                                     <span class="value">{{ value }}</span>
                                     <span class="separator">&sol;</span>
@@ -301,21 +330,21 @@
                             {{!-- Successes --}}
                             <div class="pips" data-prop="system.attributes.death.success">
                                 {{#each death.success}}
-                                    {{> pip }}
+                                {{> pip }}
                                 {{/each}}
                             </div>
 
                             {{!-- Roll Death Save --}}
                             {{#if editable}}
                             <button type="button" data-action="death" data-tooltip="BSKR.DeathSaveConfigure"
-                                    aria-label="{{ localize "BSKR.DeathSaveConfigure" }}"
-                                    class="death-save config-button unbutton">
-                              <i class="fas fa-cog" inert></i>
+                                aria-label="{{ localize " BSKR.DeathSaveConfigure" }}"
+                                class="death-save config-button unbutton">
+                                <i class="fas fa-cog" inert></i>
                             </button>
                             {{else}}
                             <button type="button" data-action="rollDeathSave" data-tooltip="BSKR.DeathSaveRoll"
-                                    aria-label="{{ localize "BSKR.DeathSaveRoll" }}"
-                                    class="{{ rollableClass }} death-save unbutton">
+                                aria-label="{{ localize " BSKR.DeathSaveRoll" }}"
+                                class="{{ rollableClass }} death-save unbutton">
                                 <bskr-icon src="systems/bskr/icons/svg/statuses/dead.svg"></bskr-icon>
                             </button>
                             {{/if}}
@@ -323,18 +352,16 @@
                             {{!-- Failures --}}
                             <div class="pips" data-prop="system.attributes.death.failure">
                                 {{#each death.failure}}
-                                    {{> pip }}
+                                {{> pip }}
                                 {{/each}}
                             </div>
 
                         </div>
 
-                        <button type="button" class="death-tab card-tab horizontal unbutton interface-only"
-                                {{#if death.open}}
-                                    data-tooltip="BSKR.DeathSaveShow" aria-label="{{ localize "BSKR.DeathSaveShow" }}"
-                                {{else}}
-                                    data-tooltip="BSKR.DeathSaveHide" aria-label="{{ localize "BSKR.DeathSaveHide" }}"
-                                {{/if}}>
+                        <button type="button" class="death-tab card-tab horizontal unbutton interface-only" {{#if
+                            death.open}} data-tooltip="BSKR.DeathSaveShow" aria-label="{{ localize " BSKR.DeathSaveShow"
+                            }}" {{else}} data-tooltip="BSKR.DeathSaveHide" aria-label="{{ localize " BSKR.DeathSaveHide"
+                            }}" {{/if}}>
                             <i class="fas fa-skull"></i>
                         </button>
                     </div>
@@ -352,15 +379,14 @@
 
                         {{!-- Favorite --}}
                         <li class="{{#if itemId}}item-tooltip{{/if}} {{ type }} {{#if suppressed}}suppressed{{/if}}"
-                            data-favorite-id="{{ id }}" {{#if key}}data-key="{{ key }}"{{/if}}
-                            {{#if itemId}}data-item-id="{{ itemId }}"{{/if}}
-                            {{#if effectId}}data-effect-id="{{ effectId }}"{{/if}}
-                            {{#if parentId}}data-parent-id="{{ parentId }}"{{/if}}
-                            {{#if activityId}}data-activity-id="{{ activityId }}" data-action="useFavorite"{{/if}}
-                            {{#if reference}}data-reference-tooltip="{{ reference }}"{{/if}}
-                            {{#if preparationMode}}data-preparation-mode="{{ preparationMode }}"{{/if}}
-                            {{#if level}}data-level="{{ level }}"{{/if}}
-                            {{#if toggle.applicable}}data-action="useFavorite"{{/if}}>
+                            data-favorite-id="{{ id }}" {{#if key}}data-key="{{ key }}" {{/if}} {{#if
+                            itemId}}data-item-id="{{ itemId }}" {{/if}} {{#if effectId}}data-effect-id="{{ effectId }}"
+                            {{/if}} {{#if parentId}}data-parent-id="{{ parentId }}" {{/if}} {{#if
+                            activityId}}data-activity-id="{{ activityId }}" data-action="useFavorite" {{/if}} {{#if
+                            reference}}data-reference-tooltip="{{ reference }}" {{/if}} {{#if
+                            preparationMode}}data-preparation-mode="{{ preparationMode }}" {{/if}} {{#if
+                            level}}data-level="{{ level }}" {{/if}} {{#if toggle.applicable}}data-action="useFavorite"
+                            {{/if}}>
 
                             {{!-- Icon --}}
                             <figure>
@@ -369,8 +395,8 @@
                                 {{!-- Favorite Deletion --}}
                                 {{#if @root.editable}}
                                 <a class="deletion-control" data-action="removeFavorite" data-tooltip-class
-                                   data-tooltip-direction data-tooltip="BSKR.FavoriteRemove"
-                                   aria-label="{{ localize "BSKR.FavoriteRemove" }}">
+                                    data-tooltip-direction data-tooltip="BSKR.FavoriteRemove" aria-label="{{ localize "
+                                    BSKR.FavoriteRemove" }}">
                                     <i class="fas fa-circle-xmark"></i>
                                 </a>
                                 {{/if}}
@@ -391,9 +417,9 @@
                                     {{#if uses.max}}
                                     {{#with uses}}
                                     {{#if (and name @root.actor.isOwner)}}
-                                    <input type="text" class="uninput value" value="{{ value }}"
-                                           {{#unless ../bareName}}data-{{/unless}}name="{{ name }}"
-                                           data-dtype="Number" inputmode="numeric" pattern="[0-9+=\-]*">
+                                    <input type="text" class="uninput value" value="{{ value }}" {{#unless
+                                        ../bareName}}data-{{/unless}}name="{{ name }}" data-dtype="Number"
+                                        inputmode="numeric" pattern="[0-9+=\-]*">
                                     {{else}}
                                     <span class="value">{{ value }}</span>
                                     {{/if}}
@@ -436,16 +462,16 @@
                                     {{else if resource}}
                                     {{#if @root.actor.isOwner}}
                                     <input type="text" class="uninput value" value="{{ resource.value }}"
-                                           data-dtype="Number" name="system.{{ id }}.value" inputmode="numeric"
-                                           pattern="[0-9+=\-]*">
+                                        data-dtype="Number" name="system.{{ id }}.value" inputmode="numeric"
+                                        pattern="[0-9+=\-]*">
                                     {{else}}
                                     <span class="value">{{ resource.value }}</span>
                                     {{/if}}
                                     <span class="separator">&sol;</span>
                                     {{#if @root.editable}}
                                     <input type="text" class="uninput max" value="{{ resource.source.max }}"
-                                           data-dtype="Number" name="system.{{ id }}.max" inputmode="numeric"
-                                           pattern="[0-9+=\-]*">
+                                        data-dtype="Number" name="system.{{ id }}.max" inputmode="numeric"
+                                        pattern="[0-9+=\-]*">
                                     {{else}}
                                     <span class="max">{{ resource.max }}</span>
                                     {{/if}}
@@ -531,20 +557,20 @@
         <div class="rows">
             <div class="top">
                 {{#each abilityRows.top}}
-                    {{> ability-score flipped=true }}
+                {{> ability-score flipped=true }}
                 {{/each}}
             </div>
             <div class="bottom">
                 {{#each abilityRows.bottom}}
-                    {{> ability-score }}
+                {{> ability-score }}
                 {{/each}}
             </div>
         </div>
     </section>
 
     {{!-- Child Creation --}}
-    <button type="button" class="create-child gold-button"
-            aria-label="{{ localize "SIDEBAR.Create" type=(localize "DOCUMENT.Item") }}">
+    <button type="button" class="create-child gold-button" aria-label="{{ localize " SIDEBAR.Create"
+        type=(localize "DOCUMENT.Item" ) }}">
         <i class="fas fa-plus"></i>
     </button>
 

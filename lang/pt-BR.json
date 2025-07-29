@@ -2544,7 +2544,7 @@
   "BSKR.HitPoints": "Pontos de vida",
   "BSKR.HitPointsBonusLevel": "Por bônus de nível",
   "BSKR.HitPointsBonusOverall": "Bônus geral",
-  "BSKR.HitPointsConfig": "Configure pontos de vida",
+  "BSKR.HitPointsConfig": "Editar pontos de vida",
   "BSKR.HitPointsCurrent": "Pontos de vida atuais",
   "BSKR.HitPointsMax": "Pontos de vida máximos",
   "BSKR.HitPointsMin": "Pontos de vida mínimos",
@@ -2560,6 +2560,31 @@
   "BSKR.HPFormulaError": "A fórmula de ponto de acerto fornecida não pôde ser avaliada.",
   "BSKR.HPFormulaRollMessage": "Roll Hit Point Formula",
   "BSKR.HITDICE": {
+    "Action": {
+      "Decrease": "Diminuir",
+      "Increase": "Aumentar"
+    },
+    "Available": "{number} disponível",
+    "Config": "Ajuste os dados de Vida",
+    "Counted": {
+      "one": "{number} dados de vida",
+      "other": "{number} pressione dados"
+    }
+  },
+    "BSKR.FuryPoints": "Pontos de fúria",
+  "BSKR.FuryPointsBonusLevel": "Por bônus de nível",
+  "BSKR.FuryPointsBonusOverall": "Bônus geral",
+  "BSKR.FuryPointsConfig": "Editar pontos de fúria",
+  "BSKR.FuryPointsCurrent": "Pontos de vida atuais",
+  "BSKR.FuryPointsMax": "Pontos de vida máximos",
+  "BSKR.FuryPointsMin": "Pontos de vida mínimos",
+  "BSKR.FuryPointsOverride": "Substituição máxima",
+  "BSKR.FuryPointsOverrideHint": "Substituir pontos de vida calculados automaticamente, ignorando qualquer HP das classes, bônus e modificador de habilidade.",
+  "BSKR.FP": "FP",
+  "BSKR.FPFormula": "Fórmula de Fúria",
+  "BSKR.FPFormulaError": "A fórmula de ponto de acerto fornecida não pôde ser avaliada.",
+  "BSKR.FPFormulaRollMessage": "Roll Hit Point Formula",
+  "BSKR.FURYDICE": {
     "Action": {
       "Decrease": "Diminuir",
       "Increase": "Aumentar"
