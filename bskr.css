@@ -50,6 +50,10 @@
   --bskr-color-hp-1: #1b4b29;
   --bskr-color-hp-2: #3ba55d;
   --bskr-color-hp-3: #276d3c;
+  --bskr-color-fp-1: #edc967;
+  --bskr-color-fp-2: #d2ac47;
+  --bskr-color-fp-3: #f7ef8a;
+  --bskr-color-fp-4: #ae8625;
   --bskr-color-hd-1: #401f25;
   --bskr-color-hd-2: var(--bskr-color-maroon);
   --bskr-color-hd-3: #500000;
@@ -4941,6 +4945,22 @@ dialog.bskr2.application {
   display: none;
 }
 /* ---------------------------------- */
+/*  Fury Points Config Sheet           */
+/* ---------------------------------- */
+.bskr2.fury-points.config-sheet .multiplier {
+  flex: 0 0 4em;
+  text-align: center;
+}
+.bskr2.fury-points.config-sheet .multiplier .times {
+  font-size: var(--font-size-14);
+}
+.bskr2.fury-points.config-sheet .form-group > label .content-link {
+  padding: 0;
+}
+.bskr2.fury-points.config-sheet .form-group > label .content-link > i {
+  display: none;
+}
+/* ---------------------------------- */
 /*  Habitat Config Sheet              */
 /* ---------------------------------- */
 .bskr2.habitat-config .form-grid {
@@ -6949,6 +6969,20 @@ dialog.bskr2.application {
 .bskr2.sheet.actor .meter.hit-points .temp-negative .label :is(.max, .bonus) {
   color: color-mix(in oklab, currentcolor, red 25%);
 }
+.bskr2.sheet.actor .meter.fury-points {
+  height: 32px;
+  font-size: var(--font-size-16);
+}
+.bskr2.sheet.actor .meter.fury-points .progress::before {
+  background: linear-gradient(to right, var(--bskr-color-fp-1) 0%,var(--bskr-color-fp-3) 50%, var(--bskr-color-fp-2) 100%);
+  border-inline-end: var(--border-width) solid var(--bskr-color-fp-4);
+}
+.bskr2.sheet.actor .meter.fury-points .temp-positive .label :is(.max, .bonus) {
+  color: color-mix(in oklab, currentcolor, blue 25%);
+}
+.bskr2.sheet.actor .meter.fury-points .temp-negative .label :is(.max, .bonus) {
+  color: color-mix(in oklab, currentcolor, red 25%);
+}
 .bskr2.sheet.actor .meter.hit-dice {
   height: 25px;
   font-size: var(--font-size-14);
@@ -6981,6 +7015,16 @@ dialog.bskr2.application {
   cursor: pointer;
 }
 .bskr2.sheet.actor .meter.sectioned > .hit-points > input {
+  position: relative;
+}
+.bskr2.sheet.actor .meter.sectioned > .fury-points {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.bskr2.sheet.actor .meter.sectioned > .fury-points > input {
   position: relative;
 }
 .bskr2.sheet.actor .meter.sectioned > .tmp {
@@ -7188,6 +7232,9 @@ dialog.bskr2.application {
   display: none;
 }
 .bskr2.sheet.actor form.locked .meter.sectioned > .hit-points {
+  cursor: default;
+}
+.bskr2.sheet.actor form.locked .meter.sectioned > .fury-points {
   cursor: default;
 }
 .bskr2.sheet.item {
@@ -9803,6 +9850,16 @@ dialog.bskr2.application {
 .bskr2.sheet.actor.npc .sheet-header .vitals .meter.hit-points .bonus {
   font-size: var(--font-size-10);
 }
+.bskr2.sheet.actor.npc .sheet-header .vitals .meter:is(.fury-points, .fury-dice) .label {
+  padding-inline-start: 12px;
+}
+.bskr2.sheet.actor.npc .sheet-header .vitals .meter.fury-points {
+  block-size: 20px;
+  font-size: var(--font-size-12);
+}
+.bskr2.sheet.actor.npc .sheet-header .vitals .meter.fury-points .bonus {
+  font-size: var(--font-size-10);
+}
 .bskr2.sheet.actor.npc .sheet-header .vitals .meter.hit-dice,
 .bskr2.sheet.actor.npc .sheet-header .vitals .meter.split {
   block-size: 16px;
@@ -10070,6 +10127,16 @@ dialog.bskr2.application {
   margin-left: auto;
 }
 .bskr2.sheet.actor.npc form.editable .sheet-header .vitals .hit-points .label .bonus + .config-button {
+  margin-left: 2px;
+}
+.bskr2.sheet.actor.npc form.editable .sheet-header .vitals .fury-points .label {
+  padding-inline-end: 6px;
+}
+.bskr2.sheet.actor.npc form.editable .sheet-header .vitals .fury-points .label .config-button {
+  font-size: var(--font-size-10);
+  margin-left: auto;
+}
+.bskr2.sheet.actor.npc form.editable .sheet-header .vitals .fury-points .label .bonus + .config-button {
   margin-left: 2px;
 }
 .bskr2.sheet.actor.npc form.editable .sheet-header .legendary label > span.value {

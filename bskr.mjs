@@ -17794,6 +17794,45 @@ class SummonActivity extends ActivityMixin(SummonActivityData) {
       }
     }
 
+        // Add bonus to FP
+    if (this.bonuses.fp) {
+      const fpBonus = new Roll(this.bonuses.fp, rollData);
+      await fpBonus.evaluate();
+
+      // If non-zero fp bonus, apply as needed for this actor.
+      // Note: Only unlinked actors will have their current FP set to their new max FP
+      if (fpBonus.total) {
+
+        // Helper function for modifying max FP ('bonuses.overall' or 'max')
+        const maxFpEffect = fpField => {
+          return (new ActiveEffect({
+            _id: staticID("bskrFPBonus"),
+            changes: [{
+              key: `system.attributes.fp.${fpField}`,
+              mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+              value: fpBonus.total
+            }],
+            disabled: false,
+            icon: "icons/magic/fire/explosion-embers-fury.webp",
+            name: game.i18n.localize("BSKR.SUMMON.FIELDS.bonuses.fp.label")
+          })).toObject();
+        };
+
+        if (!foundry.utils.isEmpty(actor.classes) && !actor._source.system.attributes.fp.max) {
+          // Actor has classes without a hard-coded max -- apply bonuses to 'overall'
+          actorUpdates.effects.push(maxFpEffect("bonuses.overall"));
+        } else if (actor.prototypeToken.actorLink) {
+          // Otherwise, linked actors boost FP via 'max' AE
+          actorUpdates.effects.push(maxFpEffect("max"));
+        } else {
+          // Unlinked actors assumed to always be "fresh" copies with bonus FP added to both
+          // Max FP and Current FP
+          actorUpdates["system.attributes.fp.max"] = actor.system.attributes.fp.max + fpBonus.total;
+          actorUpdates["system.attributes.fp.value"] = actor.system.attributes.fp.value + fpBonus.total;
+        }
+      }
+    }
+    
     // Change creature size
     if (this.creatureSizes.size) {
       const size = this.creatureSizes.has(options.creatureSize) ? options.creatureSize : this.creatureSizes.first();
@@ -21050,6 +21089,236 @@ class HitPointsAdvancement extends Advancement {
     if (value === undefined) return;
     this.actor.updateSource({
       "system.attributes.hp.value": this.actor.system.attributes.hp.value - this.#getApplicableValue(value)
+    });
+    const source = { [level]: this.value[level] };
+    this.updateSource({ [`value.-=${level}`]: null });
+    return source;
+  }
+}
+
+/**
+ * Configuration application for fury points.
+ */
+let FuryPointsConfig$1 = class FuryPointsConfig extends AdvancementConfig$1 {
+  /** @override */
+  static DEFAULT_OPTIONS = {
+    classes: ["fury-points"]
+  };
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  static PARTS = {
+    ...super.PARTS,
+    furyPoints: {
+      template: "systems/bskr/templates/advancement/fury-points-config.hbs"
+    }
+  };
+
+  /* -------------------------------------------- */
+  /*  Rendering                                   */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
+    context.furyDie = this.advancement.furyDie;
+    return context;
+  }
+};
+
+/**
+ * Inline application that presents fury points selection upon level up.
+ */
+class FuryPointsFlow extends AdvancementFlow {
+
+  /** @inheritDoc */
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      template: "systems/bskr/templates/advancement/fury-points-flow.hbs"
+    });
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  getData() {
+    const source = this.retainedData ?? this.advancement.value;
+    const value = source[this.level];
+
+    // If value is empty, `useAverage` should default to the value selected at the previous level
+    let useAverage = value === "avg";
+    if (!value) {
+      const lastValue = source[this.level - 1];
+      if (lastValue === "avg") useAverage = true;
+    }
+
+    return foundry.utils.mergeObject(super.getData(), {
+      isFirstClassLevel: (this.level === 1) && this.advancement.item.isOriginalClass,
+      furyDie: this.advancement.furyDie,
+      dieValue: this.advancement.furyDieValue,
+      data: {
+        value: Number.isInteger(value) ? value : "",
+        useAverage
+      }
+    });
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  activateListeners(html) {
+    this.form.querySelector(".average-checkbox")?.addEventListener("change", event => {
+      this.form.querySelector(".roll-result").disabled = event.target.checked;
+      this.form.querySelector(".roll-button").disabled = event.target.checked;
+      this._updateRollResult();
+    });
+    this.form.querySelector(".roll-button")?.addEventListener("click", async () => {
+      const roll = await this.advancement.actor.rollClassFuryPoints(this.advancement.item);
+      this.form.querySelector(".roll-result").value = roll.total;
+    });
+    this._updateRollResult();
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Update the roll result display when the average result is taken.
+   * @protected
+   */
+  _updateRollResult() {
+    if (!this.form.elements.useAverage?.checked) return;
+    this.form.elements.value.value = (this.advancement.furyDieValue / 2) + 1;
+  }
+
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  _updateObject(event, formData) {
+    let value;
+    if (formData.useMax) value = "max";
+    else if (formData.useAverage) value = "avg";
+    else if (Number.isInteger(formData.value)) value = parseInt(formData.value);
+
+    if (value !== undefined) return this.advancement.apply(this.level, { [this.level]: value });
+
+    this.form.querySelector(".rollResult")?.classList.add("error");
+    const errorType = formData.value ? "Invalid" : "Empty";
+    throw new Advancement.ERROR(game.i18n.localize(`BSKR.ADVANCEMENT.FuryPoints.Warning.${errorType}`));
+  }
+
+}
+
+/**
+ * Advancement that presents the player with the option to roll fury points at each level or select the average value.
+ * Keeps track of player fury point rolls or selection for each class level. **Can only be added to classes and each
+ * class can only have one.**
+ */
+class FuryPointsAdvancement extends Advancement {
+
+  /** @inheritDoc */
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      order: 10,
+      icon: "icons/magic/life/heart-pink.webp",
+      typeIcon: "systems/bskr/icons/svg/fury-points.svg",
+      title: game.i18n.localize("BSKR.ADVANCEMENT.FuryPoints.Title"),
+      hint: game.i18n.localize("BSKR.ADVANCEMENT.FuryPoints.Hint"),
+      multiLevel: true,
+      apps: {
+        config: FuryPointsConfig$1,
+        flow: FuryPointsFlow
+      }
+    });
+  }
+
+  /** @inheritDoc */
+  get average() {
+    return (this.furyDieValue / 2) + 1;
+  }
+
+  /** @inheritDoc */
+  get levels() {
+    return Array.fromRange(CONFIG.BSKR.maxLevel + 1).slice(1);
+  }
+
+  get furyDie() {
+    if (this.actor?.type === "npc") return `d${this.actor.system.attributes.hd.denomination}`;
+    return this.item.system.hd.denomination;
+  }
+
+  get furyDieValue() {
+    return Number(this.furyDie.substring(1));
+  }
+
+  configuredForLevel(level) {
+    return this.valueForLevel(level) !== null;
+  }
+
+  titleForLevel(level, { configMode = false, legacyDisplay = false } = {}) {
+    const fp = this.valueForLevel(level);
+    if (!fp || configMode || !legacyDisplay) return this.title;
+    return `${this.title}: <strong>${fp}</strong>`;
+  }
+
+  valueForLevel(level) {
+    return this.constructor.valueForLevel(this.value, this.furyDieValue, level);
+  }
+
+  static valueForLevel(data, furyDieValue, level) {
+    const value = data[level];
+    if (!value) return null;
+
+    if (value === "max") return furyDieValue;
+    if (value === "avg") return (furyDieValue / 2) + 1;
+    return value;
+  }
+
+  total() {
+    return Object.keys(this.value).reduce((total, level) => total + this.valueForLevel(parseInt(level)), 0);
+  }
+
+  getAdjustedTotal(mod) {
+    return Object.keys(this.value).reduce((total, level) => {
+      return total + Math.max(this.valueForLevel(parseInt(level)) + mod, 1);
+    }, 0);
+  }
+
+  static availableForItem(item) {
+    return !item.advancement.byType.FuryPoints?.length;
+  }
+
+  #getApplicableValue(value) {
+    const abilityId = CONFIG.BSKR.defaultAbilities.furyPoints || "con";
+    value = Math.max(value + (this.actor.system.abilities[abilityId]?.mod ?? 0), 1);
+    value += simplifyBonus(this.actor.system.attributes.fp.bonuses?.level, this.actor.getRollData());
+    return value;
+  }
+
+  apply(level, data) {
+    let value = this.constructor.valueForLevel(data, this.furyDieValue, level);
+    if (value === undefined) return;
+    this.actor.updateSource({
+      "system.attributes.fp.value": this.actor.system.attributes.fp.value + this.#getApplicableValue(value)
+    });
+    this.updateSource({ value: data });
+  }
+
+  automaticApplicationValue(level) {
+    if ((level === 1) && this.item.isOriginalClass) return { [level]: "max" };
+    if (this.value[level - 1] === "avg") return { [level]: "avg" };
+    return false;
+  }
+
+  restore(level, data) {
+    this.apply(level, data);
+  }
+
+  reverse(level) {
+    let value = this.valueForLevel(level);
+    if (value === undefined) return;
+    this.actor.updateSource({
+      "system.attributes.fp.value": this.actor.system.attributes.fp.value - this.#getApplicableValue(value)
     });
     const source = { [level]: this.value[level] };
     this.updateSource({ [`value.-=${level}`]: null });
@@ -32882,6 +33151,16 @@ class Actor5e extends SystemDocumentMixin(Actor) {
       foundry.utils.setProperty(options, "bskr.hp", { ...this.system.attributes.hp });
     }
 
+    // Reset death save counters and store fp
+    if ("fp" in (this.system.attributes || {})) {
+      const isDead = this.system.attributes.fp.value <= 0;
+      if (isDead && (foundry.utils.getProperty(changed, "system.attributes.fp.value") > 0)) {
+        foundry.utils.setProperty(changed, "system.attributes.death.success", 0);
+        foundry.utils.setProperty(changed, "system.attributes.death.failure", 0);
+      }
+      foundry.utils.setProperty(options, "bskr.fp", { ...this.system.attributes.fp });
+    }
+
     // Record previous exhaustion level.
     if (Number.isFinite(foundry.utils.getProperty(changed, "system.attributes.exhaustion"))) {
       foundry.utils.setProperty(options, "bskr.originalExhaustion", this.system.attributes.exhaustion);
@@ -34822,6 +35101,30 @@ class Actor5e extends SystemDocumentMixin(Actor) {
     if (recoverTemp) result.updateData["system.attributes.hp.temp"] = 0;
     foundry.utils.setProperty(
       result, "deltas.hitPoints", (result.deltas?.hitPoints ?? 0) + Math.max(0, max - hp.value)
+    );
+  }
+
+      /**
+   * Recovers actor hit points and eliminates any temp HP.
+   * @param {RestConfiguration} [config={}]
+   * @param {boolean} [config.recoverTemp=true]     Reset temp HP to zero.
+   * @param {boolean} [config.recoverTempMax=true]  Reset temp max HP to zero.
+   * @param {RestResult} [result={}]                Rest result being constructed.
+   * @protected
+   */
+  _getRestFuryPointRecovery({ recoverTemp, recoverTempMax, ...config } = {}, result = {}) {
+    const restConfig = CONFIG.BSKR.restTypes[config.type ?? "long"];
+    const fp = this.system.attributes?.fp;
+    if (!fp || !restConfig.recoverHitPoints) return;
+
+    let max = fp.max;
+    result.updateData ??= {};
+    if (recoverTempMax) result.updateData["system.attributes.fp.tempmax"] = 0;
+    else max = Math.max(0, fp.effectiveMax);
+    result.updateData["system.attributes.fp.value"] = max;
+    if (recoverTemp) result.updateData["system.attributes.fp.temp"] = 0;
+    foundry.utils.setProperty(
+      result, "deltas.hitPoints", (result.deltas?.hitPoints ?? 0) + Math.max(0, max - fp.value)
     );
   }
 
@@ -38286,6 +38589,7 @@ var _module$q = /*#__PURE__*/Object.freeze({
   AbilityScoreImprovementAdvancement: AbilityScoreImprovementAdvancement,
   Advancement: Advancement,
   HitPointsAdvancement: HitPointsAdvancement,
+  FuryPointsAdvancement: FuryPointsAdvancement,
   ItemChoiceAdvancement: ItemChoiceAdvancement,
   ItemGrantAdvancement: ItemGrantAdvancement,
   ScaleValueAdvancement: ScaleValueAdvancement,
@@ -40530,7 +40834,7 @@ BSKR.currencies = {
     conversion: 10,
     icon: "systems/bskr/icons/currency/silver.webp"
   },
-  cp: {
+  fp: {
     label: "BSKR.CurrencyCP",
     abbreviation: "BSKR.CurrencyAbbrCP",
     conversion: 100,
@@ -42744,6 +43048,10 @@ BSKR.advancementTypes = {
     documentClass: HitPointsAdvancement,
     validItemTypes: new Set(["class"])
   },
+  FuryPoints: {
+    documentClass: FuryPointsAdvancement,
+    validItemTypes: new Set(["class"])
+  },
   ItemChoice: {
     documentClass: ItemChoiceAdvancement,
     validItemTypes: new Set(_ALL_ITEM_TYPES)
@@ -42889,7 +43197,7 @@ BSKR.rules = {
   lightlyobscured: "Compendium.bskr.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.MAxtfJyvJV7EpzWN",
   heavilyobscured: "Compendium.bskr.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.wPFjfRruboxhtL4b",
   brightlight: "Compendium.bskr.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.RnMokVPyKGbbL8vi",
-  dimlight: "Compendium.bskr.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.n1Ocpbyhr6HhgbCG",
+  dimlight: "Compendium.bskr.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.n1Ofpbyhr6HhgbCG",
   darkness: "Compendium.bskr.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.4dfREIDjG5N4fvxd",
   blindsight: "Compendium.bskr.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.sacjsfm9ZXnw4Tqc",
   darkvision: "Compendium.bskr.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.ldmA1PbnEGVkmE11",
@@ -46306,6 +46614,120 @@ class HitPointsConfig extends BaseConfigSheet$1 {
   }
 }
 
+/**
+ * Configuration application for fury point bonuses and current values.
+ */
+class FuryPointsConfig extends BaseConfigSheet$1 {
+  /** @override */
+  static DEFAULT_OPTIONS = {
+    classes: ["fury-points"],
+    actions: {
+      roll: FuryPointsConfig.#rollFormula
+    },
+    position: {
+      width: 420
+    }
+  };
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  static PARTS = {
+    config: {
+      template: "systems/bskr/templates/actors/config/fury-points-config.hbs"
+    }
+  };
+
+  /* -------------------------------------------- */
+  /*  Properties                                  */
+  /* -------------------------------------------- */
+
+  /** @override */
+  get title() {
+    return game.i18n.localize("BSKR.FuryPoints");
+  }
+
+  /* -------------------------------------------- */
+  /*  Rendering                                   */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  async _preparePartContext(partId, context, options) {
+    context = await super._preparePartContext(partId, context, options);
+    context.data = this.document.system.attributes.fp;
+    context.fields = this.document.system.schema.fields.attributes.fields.fp.fields;
+    context.source = this.document.system._source.attributes.fp;
+
+    // Display positive ability modifier as its own row, but if negative merge into classes totals
+    const ability = CONFIG.BSKR.abilities[CONFIG.BSKR.defaultAbilities.furyPoints];
+    const mod = this.document.system.abilities?.[CONFIG.BSKR.defaultAbilities.furyPoints]?.mod ?? 0;
+    if (ability && (mod > 0)) context.ability = { mod, name: ability.label };
+
+    // Summarize FP from classes
+    context.classes = Object.values(this.document.classes).map(cls => ({
+      id: cls.id,
+      anchor: cls.toAnchor().outerHTML,
+      name: cls.name,
+      total: cls.advancement.byType.FuryPoints?.[0]?.[mod > 0 ? "total" : "getAdjustedTotal"](mod) ?? 0
+    })).sort((lhs, rhs) => rhs.name - lhs.name);
+
+    // Display active effects targeting bonus fields
+    context.effects = {
+      bonuses: this.document._prepareActiveEffectAttributions("system.attributes.fp.bonuses.level"),
+      max: this.document._prepareActiveEffectAttributions("system.attributes.fp.max"),
+      overall: this.document._prepareActiveEffectAttributions("system.attributes.fp.bonuses.overall")
+    };
+    for (const [key, value] of Object.entries(context.effects)) {
+      context.effects[key] = value
+        .filter(e => e.mode === CONST.ACTIVE_EFFECT_MODES.ADD)
+        .map(e => ({ ...e, anchor: e.document.toAnchor().outerHTML }));
+    }
+
+    context.levels = this.document.system.details?.level ?? 0;
+    context.levelMultiplier = `
+      <span class="multiplier"><span class="times">&times;</span> ${formatNumber(context.levels)}</span>
+    `;
+    context.showCalculation = context.classes.length || context.fields.bonuses;
+    context.showMaxInCalculation = context.showCalculation && (this.document.type === "npc");
+    return context;
+  }
+
+  /* -------------------------------------------- */
+  /*  Event Listeners and Handlers                */
+  /* -------------------------------------------- */
+
+  /**
+   * Handle rolling NPC health values using the provided formula.
+   * @this {FuryPointsConfig}
+   * @param {PointerEvent} event  The triggering click event.
+   * @param {HTMLElement} target  The button that was clicked.
+   * @protected
+   */
+  static async #rollFormula(event, target) {
+    try {
+      const roll = await this.document.rollNPCFuryPoints();
+      this.submit({ updateData: { "system.attributes.fp.max": roll.total } });
+    } catch (error) {
+      ui.notifications.error("BSKR.FPFormulaError", { localize: true });
+      throw error;
+    }
+  }
+
+  /* -------------------------------------------- */
+  /*  Form Submission                             */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  _processSubmitData(event, form, submitData) {
+    const clone = this.document.clone(foundry.utils.deepClone(submitData));
+    const { value, max } = this.document.system.attributes.fp;
+    const maxDelta = clone.system.attributes.fp.max - max;
+    const current = submitData.system.attributes.fp.value ?? value;
+    foundry.utils.setProperty(submitData, "system.attributes.fp.value", Math.max(current + maxDelta, 0));
+    super._processSubmitData(event, form, submitData);
+  }
+}
+
 const { BooleanField: BooleanField$c } = foundry.data.fields;
 
 /**
@@ -47553,6 +47975,9 @@ class ActorSheet5e extends ActorSheetMixin(foundry.appv1?.sheets?.ActorSheet ?? 
         break;
       case "hitPoints":
         app = new HitPointsConfig({ document: this.actor });
+        break;
+      case "furyPoints":
+        app = new FuryPointsConfig({ document: this.actor });
         break;
       case "initiative":
         app = new InitiativeConfig({ document: this.actor });
@@ -49187,6 +49612,27 @@ class AttributesFields {
     hp.pct = Math.clamp(hp.effectiveMax ? (hp.value / hp.effectiveMax) * 100 : 0, 0, 100);
   }
 
+    /**
+   * Calculate maximum fury points, taking an provided advancement into consideration.
+   * @param {object} fp                 CP object to calculate.
+   * @param {object} [options={}]
+   * @param {FuryPointsAdvancement[]} [options.advancement=[]]  Advancement items from which to get fury points per-level.
+   * @param {number} [options.bonus=0]  Additional bonus to add atop the calculated value.
+   * @param {number} [options.mod=0]    Modifier for the ability to add to hit points from advancement.
+   * @this {ActorDataModel}
+   */
+  static prepareFuryPoints(fp, { advancement = [], mod = 0, bonus = 0, newBase = 0, NPCMods = 1 } = {}) {
+    const base = advancement.length
+      ? advancement.reduce((total, advancement) => total + advancement.getAdjustedTotal(mod), 0)
+      : Math.ceil(newBase * NPCMods);
+    fp.max = (fp.max ?? 0) + base + bonus;
+
+    fp.effectiveMax = fp.max + (fp.tempmax ?? 0);
+    fp.value = Math.min(fp.value, fp.effectiveMax);
+    fp.damage = fp.effectiveMax - fp.value;
+    fp.pct = Math.clamp(fp.effectiveMax ? (fp.value / fp.effectiveMax) * 100 : 0, 0, 100);
+  }
+
   /* -------------------------------------------- */
 
   /**
@@ -50196,6 +50642,23 @@ class CharacterData extends CreatureTemplate {
             overall: new FormulaField({ deterministic: true, label: "BSKR.HitPointsBonusOverall" })
           })
         }, { label: "BSKR.HitPoints" }),
+        fp: new SchemaField$g({
+          value: new NumberField$d({
+            nullable: false, integer: true, min: 0, initial: 0, label: "BSKR.FuryPointsCurrent"
+          }),
+          max: new NumberField$d({
+            nullable: true, integer: true, min: 0, initial: null, label: "BSKR.FuryPointsOverride",
+            hint: "BSKR.FuryPointsOverrideHint"
+          }),
+          temp: new NumberField$d({ integer: true, initial: 0, min: 0, label: "BSKR.FuryPointsTemp" }),
+          tempmax: new NumberField$d({
+            integer: true, initial: 0, label: "BSKR.FuryPointsTempMax", hint: "BSKR.FuryPointsTempMaxHint"
+          }),
+          bonuses: new SchemaField$g({
+            level: new FormulaField({ deterministic: true, label: "BSKR.FuryPointsBonusLevel" }),
+            overall: new FormulaField({ deterministic: true, label: "BSKR.FuryPointsBonusOverall" })
+          })
+        }, { label: "BSKR.FuryPoints" }),
         death: new RollConfigField({
           ability: false,
           success: new NumberField$d({
@@ -50362,6 +50825,17 @@ class CharacterData extends CreatureTemplate {
       hpOptions.mod = this.abilities[CONFIG.BSKR.defaultAbilities.hitPoints ?? "con"]?.mod ?? 0;
     }
     AttributesFields.prepareHitPoints.call(this, this.attributes.hp, hpOptions);
+
+    // Fury Points
+    const fpOptions = {};
+    if (this.attributes.fp.max === null) {
+      fpOptions.advancement = Object.values(this.parent.classes)
+        .map(c => c.advancement.byType.FuryPoints?.[0]).filter(a => a);
+      fpOptions.bonus = (simplifyBonus(this.attributes.fp.bonuses.level, rollData) * this.details.level)
+        + simplifyBonus(this.attributes.fp.bonuses.overall, rollData);
+      fpOptions.mod = this.abilities[CONFIG.BSKR.defaultAbilities.furyPoints ?? "con"]?.mod ?? 0;
+    }
+    AttributesFields.prepareFuryPoints.call(this, this.attributes.fp, fpOptions);
   }
 
   /* -------------------------------------------- */
@@ -53595,6 +54069,8 @@ function ActorSheetV2Mixin(Base) {
       if (this.isEditable) {
         html.find(".meter > .hit-points").on("click", event => this._toggleEditHP(event, true));
         html.find(".meter > .hit-points > input").on("blur", event => this._toggleEditHP(event, false));
+        html.find(".meter > .fury-points").on("click", event => this._toggleEditFP(event, true));
+        html.find(".meter > .fury-points > input").on("blur", event => this._toggleEditFP(event, false));
       }
 
       // Play mode only.
@@ -53754,6 +54230,23 @@ function ActorSheetV2Mixin(Base) {
      */
     _toggleEditHP(event, edit) {
       const target = event.currentTarget.closest(".hit-points");
+      const label = target.querySelector(":scope > .label");
+      const input = target.querySelector(":scope > input");
+      label.hidden = edit;
+      input.hidden = !edit;
+      if (edit) input.focus();
+    }
+
+        /* -------------------------------------------- */
+
+    /**
+     * Toggle editing fury points.
+     * @param {PointerEvent} event  The triggering event.
+     * @param {boolean} edit        Whether to toggle to the edit state.
+     * @protected
+     */
+    _toggleEditFP(event, edit) {
+      const target = event.currentTarget.closest(".fury-points");
       const label = target.querySelector(":scope > .label");
       const input = target.querySelector(":scope > input");
       label.hidden = edit;
@@ -60896,6 +61389,15 @@ class JournalClassPageSheet extends (foundry.appv1?.sheets?.JournalPageSheet ?? 
       };
     }
 
+    const fp = item.advancement.byType.FuryPoints?.[0];
+    if (fp) {
+      advancement.fp = {
+        furyDice: modernStyle ? fp.furyDie.toUpperCase() : `1${fp.furyDie}`,
+        max: fp.furyDieValue,
+        average: Math.floor(fp.furyDieValue / 2) + 1
+      };
+    }
+
     const traits = item.advancement.byType.Trait ?? [];
     const makeTrait = type => {
       const advancement = traits.find(a => {
@@ -64938,6 +65440,19 @@ class NPCData extends CreatureTemplate {
           }),
           formula: new FormulaField({ required: true, label: "BSKR.HPFormula" })
         }, { label: "BSKR.HitPoints" }),
+        fp: new SchemaField$e({
+          value: new NumberField$b({
+            nullable: false, integer: true, min: 0, initial: 10, label: "BSKR.FuryPointsCurrent"
+          }),
+          max: new NumberField$b({
+            nullable: false, integer: true, min: 0, initial: 10, label: "BSKR.FuryPointsMax"
+          }),
+          temp: new NumberField$b({ integer: true, initial: 0, min: 0, label: "BSKR.FuryPointsTemp" }),
+          tempmax: new NumberField$b({
+            integer: true, initial: 0, label: "BSKR.FuryPointsTempMax", hint: "BSKR.FuryPointsTempMaxHint"
+          }),
+          formula: new FormulaField({ required: true, label: "BSKR.FPFormula" })
+        }, { label: "BSKR.FuryPoints" }),
         death: new RollConfigField({
           ability: false,
           success: new NumberField$b({
@@ -65303,6 +65818,13 @@ class NPCData extends CreatureTemplate {
       mod: this.abilities[CONFIG.BSKR.defaultAbilities.hitPoints ?? "con"]?.mod ?? 0
     };
     AttributesFields.prepareHitPoints.call(this, this.attributes.hp, hpOptions);
+
+       // Fury Points
+    const fpOptions = {
+      advancement: Object.values(this.parent.classes).map(c => c.advancement.byType.FuryPoints?.[0]).filter(a => a),
+      mod: this.abilities[CONFIG.BSKR.defaultAbilities.furyPoints ?? "con"]?.mod ?? 0
+    };
+    AttributesFields.prepareFuryPoints.call(this, this.attributes.fp, fpOptions);
 
     this.resources.legact.label = this.getLegendaryActionsDescription();
   }
