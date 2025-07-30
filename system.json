@@ -173,11 +173,62 @@
             }
         }
     },
+    "packs": [
+        {
+            "name": "classes",
+            "label": "Classe Berserker",
+            "system": "bskr",
+            "path": "packs/classe-berserker",
+            "type": "Item",
+            "private": false,
+            "flags": {
+                "bskr": {
+                    "sourceBook": "BSKR",
+                    "types": [
+                        "class"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "subclasses",
+            "label": "Subclasse Berserker",
+            "system": "bskr",
+            "path": "packs/subclasse-berserker",
+            "type": "Item",
+            "private": false,
+            "flags": {
+                "bskr": {
+                    "sourceBook": "BSKR",
+                    "types": [
+                        "subclass"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "classfeatures",
+            "label": "Features Berserkers",
+            "system": "bskr",
+            "path": "packs/features-berserkers",
+            "type": "Item",
+            "private": false,
+            "flags": {
+                "dnd5e": {
+                    "sourceBook": "BSKR",
+                    "types": [
+                        "feat",
+                        "weapon"
+                    ]
+                }
+            }
+        }
+    ],
     "languages": [
         {
-      "lang": "pt-BR",
-      "name": "Português (Brasil)",
-      "path": "lang/pt-BR.json"
+            "lang": "pt-BR",
+            "name": "Português (Brasil)",
+            "path": "lang/pt-BR.json"
         }
     ],
     "media": [

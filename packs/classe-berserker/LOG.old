@@ -1,0 +1,8 @@
+2025/07/30-00:04:53.351 40e0 Recovering log #4
+2025/07/30-00:04:53.357 40e0 Delete type=0 #4
+2025/07/30-00:04:53.358 40e0 Delete type=3 #2
+2025/07/30-00:05:03.034 5168 Level-0 table #9: started
+2025/07/30-00:05:03.034 5168 Level-0 table #9: 0 bytes OK
+2025/07/30-00:05:03.036 5168 Delete type=0 #7
+2025/07/30-00:05:03.042 5168 Manual compaction at level-0 from '!items!4nFRSumENwK24n29' @ 72057594037927935 : 1 .. '!items!4nFRSumENwK24n29' @ 0 : 0; will stop at (end)
+2025/07/30-00:05:03.042 5168 Manual compaction at level-1 from '!items!4nFRSumENwK24n29' @ 72057594037927935 : 1 .. '!items!4nFRSumENwK24n29' @ 0 : 0; will stop at (end)
