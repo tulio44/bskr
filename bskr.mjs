@@ -27894,16 +27894,6 @@ class ClassData extends ItemDataModel.mixin(ItemDescriptionTemplate, StartingEqu
   /** @override */
   static get compendiumBrowserFilters() {
     return new Map([
-      ["hasSpellcasting", {
-        label: "BSKR.CompendiumBrowser.Filters.HasSpellcasting",
-        type: "boolean",
-        createFilter: (filters, value, def) => {
-          if (value === 0) return;
-          const filter = { k: "system.spellcasting.progression", v: "none" };
-          if (value === -1) filters.push(filter);
-          else filters.push({ o: "NOT", v: filter });
-        }
-      }]
     ]);
   }
 
@@ -67607,16 +67597,7 @@ class RaceData extends ItemDataModel.mixin(ItemDescriptionTemplate) {
   /** @override */
   static get compendiumBrowserFilters() {
     return new Map([
-      ["hasDarkvision", {
-        label: "BSKR.CompendiumBrowser.Filters.HasDarkvision",
-        type: "boolean",
-        createFilter: (filters, value, def) => {
-          if (value === 0) return;
-          const filter = { k: "system.senses.darkvision", o: "gt", v: 0 };
-          if (value === 1) filters.push(filter);
-          else filters.push({ o: "NOT", v: filter });
-        }
-      }]
+
     ]);
   }
 
@@ -67802,16 +67783,6 @@ class SubclassData extends ItemDataModel.mixin(ItemDescriptionTemplate) {
           keyPath: "system.classIdentifier"
         }
       }],
-      ["hasSpellcasting", {
-        label: "BSKR.CompendiumBrowser.Filters.HasSpellcasting",
-        type: "boolean",
-        createFilter: (filters, value, def) => {
-          if (value === 0) return;
-          const filter = { k: "system.spellcasting.progression", v: "none" };
-          if (value === -1) filters.push(filter);
-          else filters.push({ o: "NOT", v: filter });
-        }
-      }]
     ]);
   }
 

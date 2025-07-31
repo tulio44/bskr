@@ -20,8 +20,8 @@
     "rest": "Mensagem de descanso",
     "turn": "Mensagem de curva de combate"
   },
-  "TYPES.Item.background": "Background",
-  "TYPES.Item.backgroundPl": "Backgrounds",
+  "TYPES.Item.background": "Região",
+  "TYPES.Item.backgroundPl": "Regiões",
   "TYPES.Item.container": "Recipiente",
   "TYPES.Item.containerPl": "Contêineres",
   "TYPES.Item.class": "Classe",
@@ -36,11 +36,11 @@
   "TYPES.Item.featurePl": "Características",
   "TYPES.Item.loot": "Espólio",
   "TYPES.Item.lootPl": "Espólio",
-  "TYPES.Item.race": "Raças",
-  "TYPES.Item.racePl": "Raças",
+  "TYPES.Item.race": "Vales",
+  "TYPES.Item.racePl": "Vales",
   "TYPES.Item.raceLegacy": "Corrida",
   "TYPES.Item.raceLegacyPl": "Corridas",
-  "TYPES.Item.spell": "Soletrar",
+  "TYPES.Item.spell": "Vale",
   "TYPES.Item.spellPl": "Feitiços",
   "TYPES.Item.subclass": "Subclasse",
   "TYPES.Item.subclassPl": "Subclasses",
@@ -472,7 +472,7 @@
             }
           },
           "Hint": "Use isso para valores de dados, como inspiração bárdica, ataques sneak ou dados de superioridade.",
-          "Identifier": "Esse valor de escala para o nível atual estará disponível em uma fórmula usando:<br><copyable-text>@Scale. {classe}. {Identifier}</copyable-text> - Fórmula inteira (<code>4d6</code>)<br><copyable-text>@Scale. {classe}. {identificador} .die</copyable-text> - Die inteira (<code>d6</code>)<br><copyable-text>@Scale. {class}. {Identifier} .Number</copyable-text> - Número de dados (<code>4</code>)<br><copyable-text>@scale. {class}. {identificador} .faces</copyable-text> - Número de rostos (<code>6</code>)",
+          "Identifier": "Esse valor de escala para o nível atual estará disponível em uma fórmula usando:<br><copyable-text>@Scale. {class}. {Identifier}</copyable-text> - Fórmula inteira (<code>4d6</code>)<br><copyable-text>@Scale. {class}. {identificador} .die</copyable-text> - Die inteira (<code>d6</code>)<br><copyable-text>@Scale. {class}. {Identifier} .Number</copyable-text> - Número de dados (<code>4</code>)<br><copyable-text>@scale. {class}. {identificador} .faces</copyable-text> - Número de rostos (<code>6</code>)",
           "Label": "Dados"
         },
         "Distance": {
@@ -490,7 +490,7 @@
             }
           },
           "Hint": "Use isso se você não tiver certeza do tipo de valores de escala ou se o tipo não importa.",
-          "Identifier": "Esse valor de escala para o nível atual estará disponível em uma fórmula usando:<br><copyable-text>@Scale. {classe}. {Identifier}</copyable-text>",
+          "Identifier": "Esse valor de escala para o nível atual estará disponível em uma fórmula usando:<br><copyable-text>@Scale. {class}. {Identifier}</copyable-text>",
           "Label": "Qualquer coisa"
         }
       }
@@ -684,7 +684,7 @@
   "BSKR.ArmorClassMotionless": "Classe de armadura enquanto está imóvel",
   "BSKR.ArmorClassDraconic": "Resiliência dracônica",
   "BSKR.ArmorClassUnarmoredMonk": "Defesa desarmada (monge)",
-  "BSKR.ArmorClassUnarmoredBarbarian": "Defesa desarmada (bárbaro)",
+  "BSKR.ArmorClassUnarmoredBarbarian": "Defesa sem armadura",
   "BSKR.ArmorClassUnarmoredBard": "Defesa desarmada (bardo)",
   "BSKR.ArmorClassCustom": "Fórmula personalizada",
   "BSKR.ArmorConfig": "Configure a armadura",
@@ -692,7 +692,7 @@
   "BSKR.ArmorClassCalculation": "Cálculo",
   "BSKR.ArmorClassFormula": "Fórmula",
   "BSKR.ArmorHeavyProficiency": "Pesado",
-  "BSKR.ArmorLightProficiency": "Luz",
+  "BSKR.ArmorLightProficiency": "Leve",
   "BSKR.ArmorMediumProficiency": "Médio",
   "BSKR.ArmorValue": "Valor da armadura",
   "BSKR.AC": "AC",
@@ -808,9 +808,9 @@
     "NotGMError": "O comando /prêmio está disponível apenas para GMs.",
     "UnrecognizedWarning": "Não é possível analisar {comandos}. "
   },
-  "BSKR.Background": "Background",
-  "BSKR.BackgroundAdd": "Adicione Background",
-  "BSKR.BackgroundName": "Nome do Background",
+  "BSKR.Background": "Região",
+  "BSKR.BackgroundAdd": "Adicione Região",
+  "BSKR.BackgroundName": "Nome da Região",
   "BSKR.Bastion": {
     "Action": {
       "BastionTurn": "Virar o bastião avançado"
@@ -1142,8 +1142,8 @@
     },
     "Filters": {
       "Label": "Filtros",
-      "HasDarkvision": "Tem DarkVision",
-      "HasSpellcasting": "Tem fissuração",
+      "HasDarkvision": "Tem visão no escuro",
+      "HasSpellcasting": "Tem canalização",
       "SearchResults": "Resultados da pesquisa"
     },
     "Selection": {
@@ -1168,7 +1168,7 @@
     },
     "Sources": {
       "Name": "Fontes do navegador do compêndio",
-      "Label": "Configure fontes",
+      "Label": "Fontes",
       "FilterPackages": "Pacotes de filtro",
       "Hint": "Configure quais pacotes de compêndio têm seu conteúdo disponível no navegador do compêndio."
     },
@@ -1787,7 +1787,7 @@
   "BSKR.EffectsApplyTokens": "Aplique em tokens selecionados",
   "BSKR.EffectApplyWarningConcentration": "A aplicação de um efeito que está sendo concentrado por outro caractere requer permissões GM.",
   "BSKR.EffectApplyWarningOwnership": "Os efeitos não podem ser aplicados a tokens dos quais você não é o proprietário.",
-  "BSKR.EffectsSearch": "Efeitos de pesquisa",
+  "BSKR.EffectsSearch": "Pesquisar...",
   "BSKR.ENCHANT": {
     "Title": "Encantar",
     "FIELDS": {
@@ -2268,7 +2268,7 @@
     }
   },
   "BSKR.Feature": {
-    "Background": "Recurso de background",
+    "Background": "Região",
     "Class": {
       "Label": "Recurso de classe",
       "ArcaneShot": "Tiro arcano",
@@ -2368,11 +2368,11 @@
   "BSKR.FeaturePassive": "Habilidades passivas",
   "BSKR.FeatureRechargeOn": "Recarregue",
   "BSKR.FeatureRechargeResult": "1d6 resultado",
-  "BSKR.FeatureSearch": "Recursos de pesquisa",
+  "BSKR.FeatureSearch": "Pesquisar...",
   "BSKR.FeatureUsage": "Uso de recursos",
   "BSKR.Features": "Características",
-  "BSKR.FeaturesBackground": "Recursos de background",
-  "BSKR.FeaturesClass": "{classe} recursos",
+  "BSKR.FeaturesBackground": "Recursos de região",
+  "BSKR.FeaturesClass": "Recursos {class}",
   "BSKR.FeaturesOther": "Outros recursos",
   "BSKR.Feats": "Feates",
   "BSKR.FeetAbbr": "ft.",
@@ -2571,7 +2571,7 @@
       "other": "{number} pressione dados"
     }
   },
-    "BSKR.FuryPoints": "Pontos de fúria",
+  "BSKR.FuryPoints": "Pontos de fúria",
   "BSKR.FuryPointsBonusLevel": "Por bônus de nível",
   "BSKR.FuryPointsBonusOverall": "Bônus geral",
   "BSKR.FuryPointsConfig": "Editar pontos de fúria",
@@ -2619,7 +2619,7 @@
   "BSKR.InitiativeConfigHint": "Configure modificadores e bônus de iniciativa que se aplicam a este ator.",
   "BSKR.Inspiration": "Inspiração",
   "BSKR.Inventory": "Inventário",
-  "BSKR.InventorySearch": "Pesquisar inventário",
+  "BSKR.InventorySearch": "Pesquisar...",
   "BSKR.Issues": "Problemas",
   "BSKR.ItemActionType": "Tipo de ação",
   "BSKR.ItemActivation": "Ativação",
@@ -2630,7 +2630,7 @@
   "BSKR.ItemAttackBonus": "Bônus de rolo de ataque",
   "BSKR.ItemAttackFlat": "Bônus plano",
   "BSKR.ItemAttackFlatHint": "Se verificado, não adicione proficiência, modificador de habilidade ou qualquer outro bônus para atacar o rolo, exceto o que está incluído aqui.",
-  "BSKR.ItemBackgroundDetails": "Detalhes de background",
+  "BSKR.ItemBackgroundDetails": "Detalhes de região",
   "BSKR.ItemClassDetails": "Detalhes da classe",
   "BSKR.ItemConsumableActivation": "Ativação consumível",
   "BSKR.ItemConsumableUsage": "Uso consumível",
@@ -2671,14 +2671,14 @@
       "Physical": "Físico"
     },
     "Property": {
-      "Adamantine": "Adamantine",
+      "Adamantine": "Adamantina",
       "Ammunition": "Munição",
       "Concentration": "Concentração",
-      "Finesse": "Finesse",
+      "Finesse": "Sofisticada",
       "Firearm": "Arma de fogo",
       "Focus": "Foco",
       "Heavy": "Pesado",
-      "Light": "Luz",
+      "Light": "Leve",
       "Loading": "Carregando",
       "Material": "Material",
       "Magical": "Mágico",
@@ -2690,23 +2690,23 @@
       "Somatic": "Somático",
       "Special": "Especial",
       "StealthDisadvantage": "Desvantagem furtiva",
-      "Thrown": "Jogado",
-      "Trait": "Traço passivo",
+      "Thrown": "Arremesso",
+      "Trait": "Traço",
       "TwoHanded": "Duas mãos",
       "Versatile": "Versátil",
       "Verbal": "Verbal",
       "WeightlessContents": "Conteúdo sem peso"
     }
   },
-  "BSKR.ItemRechargeCheck": "{name} recarga verificação - {result}",
+  "BSKR.ItemRechargeCheck": "Teste de recarga de {name} – {result}",
   "BSKR.ItemRechargeFailure": "falha!",
   "BSKR.ItemRechargeSuccess": "sucesso!",
-  "BSKR.ItemRecoveryRoll": "{name} recupera {count} cobranças",
-  "BSKR.ItemLossRoll": "{name} perde {count} cobranças",
-  "BSKR.ItemRecoveryRollMax": "{name} recupera todas as cobranças",
+  "BSKR.ItemRecoveryRoll": "{name} recupera {count} cargas.",
+  "BSKR.ItemLossRoll": "{name} perde {count} cargas",
+  "BSKR.ItemRecoveryRollMax": "{name} recupera todas as cargas",
   "BSKR.ItemRecoveryFormulaWarning": "Não é possível recuperar o uso de {name}. ",
   "BSKR.ItemRequiredStr": "Força necessária",
-  "BSKR.Items": "Unid",
+  "BSKR.Items": "Itens",
   "BSKR.ItemSiegeProperties": "Propriedades de cerco",
   "BSKR.ItemSpeciesDetails": "Detalhes da espécie",
   "BSKR.ItemSpeciesDetailsLegacy": "Detalhes da corrida",
@@ -2972,12 +2972,12 @@
   "BSKR.QuantityAbbr": "Qty",
   "BSKR.QuantityFormula": "Fórmula de quantidade",
   "BSKR.QuantityRoll": "Quantidades de rolo",
-  "BSKR.RacialTraits": "Traços de raça",
+  "BSKR.RacialTraits": "Traços de vale",
   "BSKR.RacialTraitsLegacy": "Traços raciais",
   "BSKR.RANGE": {
     "FIELDS": {
       "range": {
-        "label": "Faixa",
+        "label": "Alcance",
         "long": {
           "label": "Longo alcance",
           "hint": "Alcance de ataque distante da arma, se estiver presente na arma."
@@ -2990,7 +2990,7 @@
           "label": "Alcançar"
         },
         "special": {
-          "label": "Faixa especial",
+          "label": "Alcance especial",
           "hint": "Descrição de quaisquer detalhes de intervalo especial."
         },
         "units": {
@@ -2998,7 +2998,7 @@
           "hint": "Unidades usadas para medir o alcance."
         },
         "value": {
-          "label": "Valor da faixa",
+          "label": "Valor de alcance",
           "hint": "Valor do intervalo nas unidades especificadas, se aplicável."
         }
       }
@@ -3008,10 +3008,10 @@
       "Reach": "alcance {alcance}"
     }
   },
-  "BSKR.Range": "Faixa",
+  "BSKR.Range": "Alcance",
   "BSKR.RangeDistance": "Distância",
   "BSKR.RangeLong": "Longo alcance",
-  "BSKR.RangeNormal": "Faixa normal",
+  "BSKR.RangeNormal": "Alcance normal",
   "BSKR.RangeUnits": "Tipo de alcance ou unidades",
   "BSKR.Rarity": "Raridade",
   "BSKR.Reaction": "Reação",
@@ -3098,26 +3098,26 @@
     "Rolls": "Rolos"
   },
   "BSKR.RollExample": "por exemplo ",
-  "BSKR.RollMode": "Modo de rolo",
+  "BSKR.RollMode": "Modo de rolagem",
   "BSKR.RollSituationalBonus": "Bônus situacional?",
   "BSKR.Rule": {
     "Tooltip": "Dip de ferramenta",
     "Type": {
       "Label": "Tipo de regra",
-      "Condition": "Doença",
+      "Condition": "Condição",
       "Rule": "Regra"
     }
   },
   "BSKR.Movement": "Movimento",
   "BSKR.MovementConfig": "Configure a velocidade do movimento",
   "BSKR.MovementConfigHint": "Configure a velocidade do movimento e os atributos especiais do movimento.",
-  "BSKR.MovementWalk": "Andar",
-  "BSKR.MovementBurrow": "Toca",
-  "BSKR.MovementClimb": "Escalar",
-  "BSKR.MovementHover": "Passe o mouse",
-  "BSKR.MovementFly": "Voar",
-  "BSKR.MovementSwim": "Nadar",
-  "BSKR.MovementLand": "Terra",
+  "BSKR.MovementWalk": "Movimento",
+  "BSKR.MovementBurrow": "Escavação",
+  "BSKR.MovementClimb": "Escalada",
+  "BSKR.MovementHover": "Pairar",
+  "BSKR.MovementFly": "Voo",
+  "BSKR.MovementSwim": "Nado",
+  "BSKR.MovementLand": "Chão",
   "BSKR.MovementWater": "Água",
   "BSKR.MovementAir": "Ar",
   "BSKR.MovementSpeeds": "Velocidade de movimento",
@@ -3215,12 +3215,12 @@
   "BSKR.SheetClassVehicle": "Folha de veículo 5e padrão",
   "BSKR.SheetModeEdit": "Editar",
   "BSKR.SheetModePlay": "Jogar",
-  "BSKR.SavingThrow": "Salvando arremesso",
-  "BSKR.SavingThrowDC": "Dc {dc} {ability} salvando arremesso",
-  "BSKR.SavingThrowRoll": "Roll {ability} salvando arremesso",
-  "BSKR.SavingThrowShort": "Salvar",
-  "BSKR.SaveDC": "Dc {dc} {ability}",
-  "BSKR.SavePromptTitle": "{ability} Salvando arremesso",
+  "BSKR.SavingThrow": "Salva-guarda",
+  "BSKR.SavingThrowDC": "Salva-guarda de {ability} Dc {dc} ",
+  "BSKR.SavingThrowRoll": "Role {ability} salva-guarda",
+  "BSKR.SavingThrowShort": "salva-guarda",
+  "BSKR.SaveDC": "{ability} Dc {dc}",
+  "BSKR.SavePromptTitle": " Salva-guarda de {ability}",
   "BSKR.ScalingFormula": "Fórmula de escala",
   "BSKR.ScalingMode": "Modo de escala",
   "BSKR.ScalingValue": "Valor de escala",
@@ -3286,7 +3286,7 @@
   "BSKR.SkillCrf": "Criação",
   "BSKR.SkillDtm": "Determinação",
   "BSKR.SkillFly": "Voo",
-  "BSKR.SkillPromptTitle": "Teste de ({skill}) {ability}",
+  "BSKR.SkillPromptTitle": "Teste de ({skill}) [{ability}]",
   "BSKR.SkillConfigureTitle": "Configurar {Skill}",
   "BSKR.SkillConfigure": "Configure a habilidade",
   "BSKR.SkillsConfig": "Configurar habilidades",
@@ -3333,20 +3333,20 @@
       "Configure": "Configure a fonte"
     },
     "Display": {
-      "Full": "{livro} {página}",
-      "Page": "pág. "
+      "Full": "{book} {page}",
+      "Page": "pg. {page}"
     }
   },
   "BSKR.Special": "Especial",
   "BSKR.SpecialHint": "Valores especiais separados por semi-corons.",
   "BSKR.SpecialTraits": "Características especiais",
   "BSKR.Species": {
-    "Label": "Raça",
-    "Add": "Adicionar Raça",
-    "AddLegacy": "Adicione raça",
-    "Features": "Características da raça",
+    "Label": "Vale",
+    "Add": "Adicionar Vale",
+    "AddLegacy": "Adicione vale",
+    "Features": "Características da vale",
     "FeaturesLegacy": "Recursos de corrida",
-    "Name": "Nome da raça"
+    "Name": "Nome da vale"
   },
   "BSKR.Speed": "Velocidade",
   "BSKR.SpeedSpecial": "Movimento especial",
@@ -3362,7 +3362,7 @@
   "BSKR.SpellcasterLevel": "Nível de fetagem",
   "BSKR.SpellCastingHeader": "Feia fundição",
   "BSKR.Spellcasting": "Criação de feitiços",
-  "BSKR.SpellcastingClass": "{classe} spellcasting",
+  "BSKR.SpellcastingClass": "{class} spellcasting",
   "BSKR.SpellComponent": "Componente de feitiço",
   "BSKR.SpellComponents": "Componentes de feitiços",
   "BSKR.SpellCreate": "Criar feitiço",
@@ -3371,7 +3371,7 @@
   "BSKR.SpellEffects": "Efeitos de feitiço",
   "BSKR.SpellHeader": {
     "Formula": "Fórmula",
-    "Range": "Faixa",
+    "Range": "Alcance",
     "Roll": "Rolar",
     "School": "Escola",
     "Target": "Alvo",
@@ -3419,7 +3419,7 @@
   "BSKR.SpellProgPact": "Mágica do pacto",
   "BSKR.SpellProgThird": "Terceira lançadora",
   "BSKR.SpellProgression": "Progressão do feitiço",
-  "BSKR.SpellsSearch": "Pesquisar feitiços",
+  "BSKR.SpellsSearch": "Pesquisar...",
   "BSKR.SpellSchool": "Escola de feitiço",
   "BSKR.SpellScroll": "Rolagem de feitiços",
   "BSKR.SpellSlotExpended": "Slot de feitiço gasto",
@@ -4232,12 +4232,12 @@
           "Label": "Iniciativa"
         },
         "LongRest": {
-          "Label": "Longa descanso",
-          "Abbreviation": "Lr"
+          "Label": "Longo descanso",
+          "Abbreviation": "Desc. Longo"
         },
         "ShortRest": {
           "Label": "Descanso curto",
-          "Abbreviation": "Sr"
+          "Abbreviation": "Desc.Curto"
         },
         "Turn": {
           "Label": "Cada turno"
@@ -4378,21 +4378,21 @@
         "hint": "Dados de dano intrínseco da arma. "
       },
       "mastery": {
-        "label": "Domínio",
-        "hint": "A habilidade de armas especiais destrancadas para personagens que têm domínio de armas ou um recurso relacionado."
+        "label": "Maestria",
+        "hint": "A habilidade de armas especiais destrancadas para personagens que têm maestria de armas ou um recurso relacionado."
       }
     },
     "Mastery": {
-      "Label": "Domínio de armas",
-      "Flavor": "Domínio",
-      "Cleave": "Cleagem",
-      "Graze": "Pastar",
-      "Nick": "Nick",
-      "Push": "Empurrar",
-      "Sap": "Seiva",
-      "Slow": "Lento",
+      "Label": "Maestria com Armas",
+      "Flavor": "Maestria",
+      "Cleave": "Cortar em Arco",
+      "Graze": "Arranhão",
+      "Nick": "Talho",
+      "Push": "Empurrão",
+      "Sap": "Esgotamento",
+      "Slow": "Retardar",
       "Topple": "Derrubar",
-      "Vex": "VEX"
+      "Vex": "Irritar"
     }
   },
   "BSKR.WeaponCategory": "{categoria} arma",
@@ -4544,10 +4544,10 @@
         "Modern": "Moderno"
       },
       "SubclassHint": "Solte as subclasses aqui",
-      "TableCaption": "A {classe}",
+      "TableCaption": "A {class}",
       "TableOptionalCaption": "Recursos opcionais {class}",
       "Traits": {
-        "Caption": "Características do núcleo {classe}",
+        "Caption": "Características do núcleo {class}",
         "Header": "Probiências"
       }
     },
@@ -4792,7 +4792,7 @@
       "Label": "Tema",
       "Automatic": "Automático",
       "Dark": "Modo escuro",
-      "Light": "Modo de luz"
+      "Light": "Modo claro"
     }
   },
   "SOURCE.BOOK.SRD": "Documento de referência do sistema 5.1",

@@ -214,7 +214,7 @@
             "type": "Item",
             "private": false,
             "flags": {
-                "dnd5e": {
+                "bskr": {
                     "sourceBook": "BSKR",
                     "types": [
                         "feat",
@@ -239,7 +239,7 @@
         },
         {
             "type": "setup",
-            "url": "systems/dnd5e/ui/official/dnd5e-repo.jpg",
+            "url": "systems/bskr/ui/official/bskr-repo.jpg",
             "thumbnail": "systems/bskr/ui/official/bskr-thumbmail.jpg"
         }
     ],
@@ -251,19 +251,19 @@
     "primaryTokenAttribute": "attributes.hp",
     "background": "systems/bskr/ui/official/bskr-background.webp",
     "flags": {
-        "dnd5e": {
+        "bskr": {
             "sourceBooks": {
                 "SRD 5.1": "SOURCE.BOOK.SRD"
             },
             "spellLists": [
-                "Compendium.dnd5e.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.ziBzRlrpBm1KVV0j",
-                "Compendium.dnd5e.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.cuG9d7J9fQH9InYT",
-                "Compendium.dnd5e.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.MWiN7ILEO0Vd3zAZ",
-                "Compendium.dnd5e.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.FhucONA0yRZQjMmb",
-                "Compendium.dnd5e.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.sANq9JMycfSq3A5d",
-                "Compendium.dnd5e.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.PVgly1xB2S2I8GLQ",
-                "Compendium.dnd5e.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.mx4TsSbBIAaAkhQ7",
-                "Compendium.dnd5e.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.k7Rs5EyXeA0SFTXD"
+                "Compendium.bskr.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.ziBzRlrpBm1KVV0j",
+                "Compendium.bskr.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.cuG9d7J9fQH9InYT",
+                "Compendium.bskr.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.MWiN7ILEO0Vd3zAZ",
+                "Compendium.bskr.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.FhucONA0yRZQjMmb",
+                "Compendium.bskr.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.sANq9JMycfSq3A5d",
+                "Compendium.bskr.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.PVgly1xB2S2I8GLQ",
+                "Compendium.bskr.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.mx4TsSbBIAaAkhQ7",
+                "Compendium.bskr.rules.JournalEntry.QvPDSUsAiEn3hD8s.JournalEntryPage.k7Rs5EyXeA0SFTXD"
             ]
         },
         "needsMigrationVersion": "4.0.1",
