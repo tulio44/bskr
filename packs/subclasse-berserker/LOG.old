@@ -1,13 +1,1 @@
-2025/07/30-21:03:14.998 4adc Recovering log #18
-2025/07/30-21:03:15.005 4adc Delete type=0 #18
-2025/07/30-21:03:15.006 4adc Delete type=3 #17
-2025/07/30-22:00:17.249 51b4 Level-0 table #22: started
-2025/07/30-22:00:17.249 51b4 Level-0 table #22: 0 bytes OK
-2025/07/30-22:00:17.250 51b4 Delete type=0 #20
-2025/07/30-22:00:17.264 51b4 Manual compaction at level-0 from '!items!V2HClz9CTrfcBAVJ' @ 72057594037927935 : 1 .. '!items!V2HClz9CTrfcBAVJ' @ 0 : 0; will stop at '!items!V2HClz9CTrfcBAVJ' @ 1 : 1
-2025/07/30-22:00:17.264 51b4 Compacting 1@0 + 0@1 files
-2025/07/30-22:00:17.284 51b4 Generated table #23@0: 1 keys, 1409 bytes
-2025/07/30-22:00:17.284 51b4 Compacted 1@0 + 0@1 files => 1409 bytes
-2025/07/30-22:00:17.285 51b4 compacted to: files[ 0 1 0 0 0 0 0 ]
-2025/07/30-22:00:17.286 51b4 Delete type=2 #5
-2025/07/30-22:00:17.288 51b4 Manual compaction at level-0 from '!items!V2HClz9CTrfcBAVJ' @ 1 : 1 .. '!items!V2HClz9CTrfcBAVJ' @ 0 : 0; will stop at (end)
+2025/07/31-19:03:58.754 3788 Delete type=3 #1
