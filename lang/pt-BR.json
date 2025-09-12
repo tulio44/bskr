@@ -1539,10 +1539,9 @@
   "BSKR.CurrencyAbbrPP": "pp",
   "BSKR.CurrencyAbbrSP": "sp",
   "BSKR.CurrencyCP": "Cobre",
-  "BSKR.CurrencyEP": "Eletrum",
+  "BSKR.CurrencyEP": "Prata",
   "BSKR.CurrencyGP": "Ouro",
-  "BSKR.CurrencyPP": "Platina",
-  "BSKR.CurrencySP": "Prata",
+  "BSKR.CurrencySP": "Bronze",
   "BSKR.CurrencyManager": {
     "Title": "Gerenciar moeda",
     "Convert": {
@@ -2295,8 +2294,9 @@
       "General": "Feat geral",
       "Origin": "Feat de origem"
     },
+    "Berserkerart": "Arte Berserker",
     "Monster": "Recurso de monstro",
-    "Species": "As espécies apresentam",
+    "Species": "Recursos de espécies",
     "SpeciesLegacy": "Recurso de corrida",
     "SupernaturalGift": {
       "Label": "Presente sobrenatural",
@@ -2373,6 +2373,7 @@
   "BSKR.Features": "Características",
   "BSKR.FeaturesBackground": "Recursos de região",
   "BSKR.FeaturesClass": "Recursos {class}",
+  "BSKR.BerserkerArts": "Artes Berserkers",
   "BSKR.FeaturesOther": "Outros recursos",
   "BSKR.Feats": "Feates",
   "BSKR.FeetAbbr": "ft.",

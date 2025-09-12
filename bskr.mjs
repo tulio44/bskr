@@ -40555,6 +40555,9 @@ BSKR.featureTypes = {
       epicBoon: "BSKR.Feature.Feat.EpicBoon"
     }
   },
+    berserkerart: {
+    label: "BSKR.Feature.Berserkerart",
+  },
   supernaturalGift: {
     label: "BSKR.Feature.SupernaturalGift.Label",
     subtypes: {
@@ -40800,12 +40803,6 @@ preLocalize("lootTypes", { key: "label" });
  * @enum {CurrencyConfiguration}
  */
 BSKR.currencies = {
-  pp: {
-    label: "BSKR.CurrencyPP",
-    abbreviation: "BSKR.CurrencyAbbrPP",
-    conversion: 0.1,
-    icon: "systems/bskr/icons/currency/platinum.webp"
-  },
   gp: {
     label: "BSKR.CurrencyGP",
     abbreviation: "BSKR.CurrencyAbbrGP",
@@ -48613,12 +48610,16 @@ class ActorSheet5eCharacter extends ActorSheet5e {
       ctx.ungroup = "passive";
       const [originId] = item.getFlag("bskr", "advancementOrigin")?.split(".") ?? [];
       const group = this.actor.items.get(originId);
-      switch (group?.type) {
-        case "race": ctx.group = "race"; break;
-        case "background": ctx.group = "background"; break;
-        case "class": ctx.group = group.identifier; break;
-        case "subclass": ctx.group = group.class?.identifier ?? "other"; break;
-        default: ctx.group = "other";
+      if (item.system.type?.value === "berserkerart") {
+        ctx.group = "berserkerart";
+      } else {
+        switch (group?.type) {
+          case "race": ctx.group = "race"; break;
+          case "background": ctx.group = "background"; break;
+          case "class": ctx.group = group.identifier; break;
+          case "subclass": ctx.group = group.class?.identifier ?? "other"; break;
+          default: ctx.group = "other";
+        }
       }
 
       // Individual item preparation
@@ -54654,6 +54655,32 @@ class ActorSheet5eCharacter2 extends ActorSheetV2Mixin(ActorSheet5eCharacter) {
         items: [],
         dataset: { type: cls.identifier }
       });
+    });
+
+    context.items.forEach((item) => {
+      if (item.system?.type?.value === "berserkerart") {
+        let section = features.find((f) => f.dataset.type === item.system.type.value);
+        if (!section) {
+          section = {
+            label: game.i18n.format("BSKR.BerserkerArts"),
+            items: [],
+            dataset: { type: item.system?.type.value },
+          };
+          features.push(section);
+        }
+        section.items.push(item);
+      } else if (item.system?.type?.subtype) {
+        let section = features.find((f) => f.dataset.type === item.system?.type?.subtype);
+        if (!section) {
+          section = {
+            label: game.i18n.format("BSKR.FeaturesSubtype", { subtype: item.system.type.label }),
+            items: [],
+            dataset: { type: item.system?.type?.subtype },
+          };
+          features.push(section);
+        }
+        section.items.push(item);
+      }
     });
 
     if (this.actor.system.details.race instanceof bskr.documents.Item5e) {

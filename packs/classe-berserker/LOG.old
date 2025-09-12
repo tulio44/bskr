@@ -1,1 +1,7 @@
-2025/07/31-19:03:58.628 2c40 Delete type=3 #1
+2025/09/12-01:54:29.500 40e0 Recovering log #30
+2025/09/12-01:54:29.504 40e0 Delete type=0 #30
+2025/09/12-01:54:29.504 40e0 Delete type=3 #28
+2025/09/12-01:58:13.056 12ac Level-0 table #36: started
+2025/09/12-01:58:13.056 12ac Level-0 table #36: 0 bytes OK
+2025/09/12-01:58:13.057 12ac Delete type=0 #34
+2025/09/12-01:58:13.061 12ac Manual compaction at level-0 from '!items!4nFRSumENwK24n29' @ 72057594037927935 : 1 .. '!items!4nFRSumENwK24n29' @ 0 : 0; will stop at (end)
