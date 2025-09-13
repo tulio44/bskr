@@ -1049,7 +1049,7 @@
     }
   },
   "BSKR.CHECK": {
-    "Title": "Verificar",
+    "Title": "Teste",
     "FIELDS": {
       "check": {
         "label": "Verifique os detalhes",
@@ -4420,7 +4420,7 @@
     "AttackLong": "{formula} para bater",
     "AttackShort": "{formula}",
     "AwardEach": "{prêmio} cada",
-    "CheckShort": "{verificar}",
+    "CheckShort": "{check}",
     "CheckLong": "{check} check",
     "DamageExtended": "<em>Bater:</em> {dano} dano",
     "DamageDouble": "{primeiro} plus {Second}",
