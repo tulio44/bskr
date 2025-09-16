@@ -15825,7 +15825,7 @@ class CompendiumBrowser extends Application5e {
     {
       tab: "spells",
       label: "TYPES.Item.spellPl",
-      icon: "fas fa-book",
+      icon: "fas fa-ring",
       documentClass: "Item",
       types: ["spell"]
     },
@@ -54415,7 +54415,7 @@ class ActorSheet5eCharacter2 extends ActorSheetV2Mixin(ActorSheet5eCharacter) {
     { tab: "details", label: "BSKR.Details", icon: "fas fa-cog" },
     { tab: "inventory", label: "BSKR.Inventory", svg: "backpack" },
     { tab: "features", label: "BSKR.Features", icon: "fas fa-list" },
-    { tab: "spells", label: "TYPES.Item.spellPl", icon: "fas fa-book" },
+    { tab: "spells", label: "TYPES.Item.spellPl", icon: "fas fa-ring" },
     { tab: "effects", label: "BSKR.Effects", icon: "fas fa-bolt" },
     { tab: "biography", label: "BSKR.Biography", icon: "fas fa-feather" },
     { tab: "bastion", label: "BSKR.Bastion.Label", icon: "fas fa-chess-rook" },
@@ -55611,7 +55611,7 @@ class ActorSheet5eNPC2 extends ActorSheetV2Mixin(ActorSheet5eNPC) {
   static TABS = [
     { tab: "features", label: "BSKR.Features", icon: "fas fa-list" },
     { tab: "inventory", label: "BSKR.Inventory", svg: "backpack" },
-    { tab: "spells", label: "TYPES.Item.spellPl", icon: "fas fa-book" },
+    { tab: "spells", label: "TYPES.Item.spellPl", icon: "fas fa-ring" },
     { tab: "effects", label: "BSKR.Effects", icon: "fas fa-bolt" },
     { tab: "biography", label: "BSKR.Biography", icon: "fas fa-feather" },
     { tab: "special-traits", label: "BSKR.SpecialTraits", icon: "fas fa-star" }
