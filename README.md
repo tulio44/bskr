@@ -2,22 +2,23 @@
 
 # Berserker System (FoundryVTT)
 
-Este sistema para [Foundry Virtual Tabletop](http://foundryvtt.com) é uma adaptação inspirada no sistema original de 
+O **Berserker System (BSKR)** é um sistema para [Foundry Virtual Tabletop](http://foundryvtt.com),  
+fortemente inspirado e construído sobre o código-base do sistema oficial de  
 [Dungeons & Dragons 5ª Edição (DnD5e) para FoundryVTT](https://gitlab.com/foundrynet/dnd5e).  
 
-O **Berserker System (BSKR)** utiliza o **código base, imagens, compêndios e outros recursos** do sistema oficial de DnD5e, 
-com modificações feitas para adequar às necessidades e identidade própria do projeto.  
+Além de utilizar trechos de código, imagens, compêndios e outros recursos herdados do DnD5e, o projeto  
+foi adaptado e modificado para atender à proposta única do universo **Berserker**.  
 
-> ⚔️ Este trabalho é feito como uma **homenagem** ao criador e mantenedor do sistema de DnD5e no Foundry,  
-> **Gabriel Bavaroti** (*aka: hootnal*), cujo esforço e dedicação possibilitaram esta construção.
+> Este universo foi criado por **Gabriel Bavaroti (aka: hootnal)**,  
+> sendo este repositório uma forma de **homenagem** ao seu trabalho e dedicação.
 
 ---
 
 ## Funcionalidades
 
 - Fichas de personagens e itens customizadas para o universo Berserker.  
-- Suporte mecânico para rolagens de dados e regras necessárias para jogar.  
-- Conteúdo de compêndio adaptado: monstros, heróis, itens, feitiços, habilidades de classe, etc.  
+- Suporte a rolagens de dados e regras adaptadas.  
+- Compêndios com monstros, heróis, itens, habilidades e feitiços únicos.  
 
 ---
 
@@ -28,11 +29,13 @@ disponível em: https://dnd.wizards.com/resources/systems-reference-document
 Licenciado sob [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode).  
 
 O componente de software deste sistema é distribuído sob a **MIT License**.  
-As imagens e demais recursos são distribuídos sob diferentes termos — verifique os arquivos `LICENSE` incluídos.
+As imagens e demais recursos são distribuídos sob diferentes termos — verifique os arquivos `LICENSE` incluídos.  
+
+O **código-base** foi adaptado do sistema [DnD5e para FoundryVTT](https://gitlab.com/foundrynet/dnd5e).  
 
 ---
 
 ## Instalação
 
-Para instalar e usar o **Berserker System (BSKR)** no Foundry VTT, insira a seguinte URL no diálogo **Install System**:  
+Para instalar o **Berserker System (BSKR)** no Foundry VTT, insira a seguinte URL no diálogo **Install System**:  
 
