@@ -40558,6 +40558,9 @@ BSKR.featureTypes = {
     berserkerart: {
     label: "BSKR.Feature.Berserkerart",
   },
+  vale: {
+    label: "BSKR.Feature.Vale",
+  },
   supernaturalGift: {
     label: "BSKR.Feature.SupernaturalGift.Label",
     subtypes: {
@@ -48612,6 +48615,8 @@ class ActorSheet5eCharacter extends ActorSheet5e {
       const group = this.actor.items.get(originId);
       if (item.system.type?.value === "berserkerart") {
         ctx.group = "berserkerart";
+      } else if (item.system.type?.value === "vale") {
+        ctx.group = "vale";
       } else {
         switch (group?.type) {
           case "race": ctx.group = "race"; break;
@@ -54663,6 +54668,17 @@ class ActorSheet5eCharacter2 extends ActorSheetV2Mixin(ActorSheet5eCharacter) {
         if (!section) {
           section = {
             label: game.i18n.format("BSKR.BerserkerArts"),
+            items: [],
+            dataset: { type: item.system?.type.value },
+          };
+          features.push(section);
+        }
+        section.items.push(item);
+      } else if (item.system?.type?.value === "vale") {
+        let section = features.find((f) => f.dataset.type === item.system.type.value);
+        if (!section) {
+          section = {
+            label: game.i18n.format("BSKR.Vales"),
             items: [],
             dataset: { type: item.system?.type.value },
           };
@@ -73766,6 +73782,7 @@ function _configureConsumableAttributes() {
     ...Object.keys(BSKR.abilities).map(ability => `abilities.${ability}.value`),
     "attributes.ac.flat",
     "attributes.hp.value",
+    "attributes.fp.value",
     "attributes.exhaustion",
     ...Object.keys(BSKR.senses).map(sense => `attributes.senses.${sense}`),
     ...Object.keys(BSKR.movementTypes).map(type => `attributes.movement.${type}`),
