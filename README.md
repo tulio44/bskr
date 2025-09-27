@@ -2,33 +2,37 @@
 
 # Berserker System (FoundryVTT)
 
-This game system for [Foundry Virtual Tabletop](http://foundryvtt.com) provides character sheet and game system 
-support for the Fifth Edition of the world's most popular roleplaying game.
+Este sistema para [Foundry Virtual Tabletop](http://foundryvtt.com) é uma adaptação inspirada no sistema original de 
+[Dungeons & Dragons 5ª Edição (DnD5e) para FoundryVTT](https://gitlab.com/foundrynet/dnd5e).  
 
-This system provides character sheet support for Actors and Items, mechanical support for dice and rules necessary to
-play games of Fifth Edition, and compendium content for Monsters, Heroes, Items, Spells, Class Features, Monster 
-Features, and more!
+O **Berserker System (BSKR)** utiliza o **código base, imagens, compêndios e outros recursos** do sistema oficial de DnD5e, 
+com modificações feitas para adequar às necessidades e identidade própria do projeto.  
 
-This work includes material taken from the System Reference Document 5.1 ("SRD 5.1") by Wizards of the Coast LLC and available at https://dnd.wizards.com/resources/systems-reference-document. The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International License available at https://creativecommons.org/licenses/by/4.0/legalcode.
+> ⚔️ Este trabalho é feito como uma **homenagem** ao criador e mantenedor do sistema de DnD5e no Foundry,  
+> **Gabriel Bavaroti** (*aka: hootnal*), cujo esforço e dedicação possibilitaram esta construção.
 
-Images and other assets are distributed under various terms, please see their `LICENSE` files for full details.
+---
 
-The software component of this system is distributed under the MIT license.
+## Funcionalidades
 
-## Installation Instructions
+- Fichas de personagens e itens customizadas para o universo Berserker.  
+- Suporte mecânico para rolagens de dados e regras necessárias para jogar.  
+- Conteúdo de compêndio adaptado: monstros, heróis, itens, feitiços, habilidades de classe, etc.  
 
-To install and use the Dungeons & Dragons Fifth Edition system for Foundry Virtual Tabletop, simply paste the following URL into the 
-**Install System** dialog on the Setup menu of the application.
+---
 
-https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json
+## Licença e Créditos
 
-If you wish to manually install the system, you must clone or extract it into the `Data/systems/dnd5e` folder. You
-may do this by cloning the repository or downloading a zip archive from the
-[Releases Page](https://github.com/foundryvtt/dnd5e/releases).
+Este trabalho inclui material do **System Reference Document 5.1 (SRD 5.1)** da Wizards of the Coast LLC,  
+disponível em: https://dnd.wizards.com/resources/systems-reference-document  
+Licenciado sob [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode).  
 
-## Frequently Asked Questions  
-Check the [Wiki](../../wiki) for answers to our most [frequently asked questions](../../wiki/faq)
+O componente de software deste sistema é distribuído sob a **MIT License**.  
+As imagens e demais recursos são distribuídos sob diferentes termos — verifique os arquivos `LICENSE` incluídos.
 
-## Community Contribution
+---
 
-See the [CONTRIBUTING](/CONTRIBUTING.md) file for information about how you can help this project.
+## Instalação
+
+Para instalar e usar o **Berserker System (BSKR)** no Foundry VTT, insira a seguinte URL no diálogo **Install System**:  
+
