@@ -1,23 +1,13 @@
 <<<<<<< HEAD
-2025/09/13-21:33:57.835 3be0 Recovering log #53
-2025/09/13-21:33:57.839 3be0 Delete type=0 #53
-2025/09/13-21:33:57.839 3be0 Delete type=3 #52
-2025/09/13-21:34:22.661 560 Level-0 table #57: started
-2025/09/13-21:34:22.661 560 Level-0 table #57: 0 bytes OK
-2025/09/13-21:34:22.662 560 Delete type=0 #55
-2025/09/13-21:34:22.692 560 Manual compaction at level-0 from '!items!V2HClz9CTrfcBAVJ' @ 72057594037927935 : 1 .. '!items!V2HClz9CTrfcBAVJ' @ 0 : 0; will stop at '!items!V2HClz9CTrfcBAVJ' @ 1 : 1
-2025/09/13-21:34:22.692 560 Compacting 1@0 + 0@1 files
-2025/09/13-21:34:22.705 560 Generated table #58@0: 1 keys, 1409 bytes
-2025/09/13-21:34:22.706 560 Compacted 1@0 + 0@1 files => 1409 bytes
-2025/09/13-21:34:22.707 560 compacted to: files[ 0 1 0 0 0 0 0 ]
-2025/09/13-21:34:22.707 560 Delete type=2 #36
-2025/09/13-21:34:22.708 560 Manual compaction at level-0 from '!items!V2HClz9CTrfcBAVJ' @ 1 : 1 .. '!items!V2HClz9CTrfcBAVJ' @ 0 : 0; will stop at (end)
+2025/09/13-21:35:37.995 3be0 Recovering log #56
+2025/09/13-21:35:38.000 3be0 Delete type=0 #56
+2025/09/13-21:35:38.000 3be0 Delete type=3 #54
+2025/09/13-21:35:57.486 560 Level-0 table #62: started
+2025/09/13-21:35:57.486 560 Level-0 table #62: 0 bytes OK
+2025/09/13-21:35:57.487 560 Delete type=0 #60
+2025/09/13-21:35:57.491 560 Manual compaction at level-0 from '!items!V2HClz9CTrfcBAVJ' @ 72057594037927935 : 1 .. '!items!V2HClz9CTrfcBAVJ' @ 0 : 0; will stop at (end)
 =======
-2025/09/27-01:51:19.324 45b0 Recovering log #52
-2025/09/27-01:51:19.329 45b0 Delete type=0 #52
-2025/09/27-01:51:19.329 45b0 Delete type=3 #50
-2025/09/27-02:22:10.299 536c Level-0 table #58: started
-2025/09/27-02:22:10.299 536c Level-0 table #58: 0 bytes OK
-2025/09/27-02:22:10.301 536c Delete type=0 #56
-2025/09/27-02:22:10.340 536c Manual compaction at level-0 from '!items!V2HClz9CTrfcBAVJ' @ 72057594037927935 : 1 .. '!items!V2HClz9CTrfcBAVJ' @ 0 : 0; will stop at (end)
+2025/09/27-02:24:12.242 5ab8 Recovering log #57
+2025/09/27-02:24:12.248 5ab8 Delete type=0 #57
+2025/09/27-02:24:12.248 5ab8 Delete type=3 #55
 >>>>>>> segmentation-features
