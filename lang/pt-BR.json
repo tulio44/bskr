@@ -70,7 +70,7 @@
         "Label": "Bônus globais",
         "Hint": "Esses bônus se aplicam a cheques e defesas feitas com qualquer habilidade."
       },
-      "Score": "{ability} pontuação"
+      "Score": "Valor de {ability}"
     }
   },
   "BSKR.Ability": "Habilidade",
@@ -94,7 +94,7 @@
   "BSKR.AbilityScore": "Pontuação de habilidade",
   "BSKR.AbilityScoreShort": "Pontuação",
   "BSKR.AbilityScorePl": "Pontuações de habilidade",
-  "BSKR.AbilityScoreL": "{ability} pontuação",
+  "BSKR.AbilityScoreL": "Valor de {ability}",
   "BSKR.AbilityScoreMax": "Pontuação máxima de habilidade",
   "BSKR.AbilityScoreMaxShort": "Máximo",
   "BSKR.AbilityModifier": "Modificador de habilidade",
@@ -254,7 +254,7 @@
       },
       "Details": "Detalhes de melhoria",
       "Feat": {
-        "ASIName": "Feat de melhoria da pontuação da habilidade",
+        "ASIName": "Feat de melhoria de valor da habilidade",
         "Hint": "Deixe um feito aqui para escolher um em vez de uma melhoria da pontuação de habilidade."
       },
       "FIELDS": {
@@ -283,14 +283,14 @@
       "Journal": {
         "DescriptionLegacy": "<p>Quando você atinge o nível {FirstLevelDinal} e novamente no nível {OtherLevelSordinal}, você pode aumentar uma pontuação de habilidade de sua escolha em 2 ou pode aumentar duas pontuações de habilidade de sua escolha em 1. Como normal, não pode aumentar uma pontuação de habilidade acima {maxabilityscore} usando esse recurso.</p><p>Usando a regra de feitos opcionais, você pode renunciar a fazer esse recurso para fazer uma façanha de sua escolha.</p>",
         "DescriptionModern": "<p>Você ganha o feito de melhoria da pontuação da habilidade ou outro feito de sua escolha para o qual você se qualifica. </p>",
-        "Name": "Melhoria da pontuação da habilidade"
+        "Name": "Melhoria de valor da habilidade"
       },
       "LockedHint": "As pontuações não podem ser modificadas com um feito selecionado.",
       "PointsRemaining": {
         "one": "{pontos} ponto restante",
         "other": "{pontos} pontos restantes"
       },
-      "Title": "Melhoria da pontuação da habilidade",
+      "Title": "Melhoria de valor da habilidade",
       "Warning": {
         "Level": "Deve estar pelo menos nível {level} para obter esse feito.",
         "Type": "Somente os recursos com o tipo \"feat\" podem ser selecionados."
@@ -1414,7 +1414,7 @@
         "Label": "Usos de atividade",
         "PromptDecrease": "Consumir uso de atividades?",
         "PromptIncrease": "Restaurar o uso da atividade?",
-        "PromptHintDecrease": "Gastar <strong>{cost}</strong> {use} desta atividade ({available} {disponívelsuse} disponível).",
+        "PromptHintDecrease": "Gastar <strong>{cost}</strong> {use} desta atividade ({available} {availableUse} disponível).",
         "PromptHintIncrease": "Recuperar <strong>{cost}</strong> {use} desta atividade.",
         "Warning": "Usos na atividade {item} {activity}"
       },
@@ -1422,9 +1422,9 @@
         "Label": "Atributo",
         "PromptDecrease": "Consumir atributo?",
         "PromptIncrease": "Atributo de restauração?",
-        "PromptHintDecrease": "Diminuir <code>{atributo}</code> por <strong>{cost}</strong> (atualmente {atual}).",
-        "PromptHintIncrease": "Aumentar <code>{atributo}</code> por <strong>{cost}</strong> (atualmente {atual}).",
-        "Warning": "{atributo} quantidade"
+        "PromptHintDecrease": "Diminuir <code>{attribute}</code> por <strong>{cost}</strong> (atualmente {current}).",
+        "PromptHintIncrease": "Aumentar <code>{attribute}</code> por <strong>{cost}</strong> (atualmente {current}).",
+        "Warning": "{attribute} quantidade"
       },
       "HitDice": {
         "Label": "Dados de vida",
@@ -2295,6 +2295,7 @@
       "Origin": "Feat de origem"
     },
     "Berserkerart": "Arte Berserker",
+    "Vale": "Vale",
     "Monster": "Recurso de monstro",
     "Species": "Recursos de espécies",
     "SpeciesLegacy": "Recurso de corrida",
@@ -2374,6 +2375,7 @@
   "BSKR.FeaturesBackground": "Recursos de região",
   "BSKR.FeaturesClass": "Recursos {class}",
   "BSKR.BerserkerArts": "Artes Berserkers",
+  "BSKR.Vales": "Vales",
   "BSKR.FeaturesOther": "Outros recursos",
   "BSKR.Feats": "Feates",
   "BSKR.FeetAbbr": "ft.",
@@ -2576,11 +2578,11 @@
   "BSKR.FuryPointsBonusLevel": "Por bônus de nível",
   "BSKR.FuryPointsBonusOverall": "Bônus geral",
   "BSKR.FuryPointsConfig": "Editar pontos de fúria",
-  "BSKR.FuryPointsCurrent": "Pontos de vida atuais",
-  "BSKR.FuryPointsMax": "Pontos de vida máximos",
-  "BSKR.FuryPointsMin": "Pontos de vida mínimos",
+  "BSKR.FuryPointsCurrent": "Pontos de fúria atuais",
+  "BSKR.FuryPointsMax": "Pontos de fúria máximos",
+  "BSKR.FuryPointsMin": "Pontos de fúria mínimos",
   "BSKR.FuryPointsOverride": "Substituição máxima",
-  "BSKR.FuryPointsOverrideHint": "Substituir pontos de vida calculados automaticamente, ignorando qualquer HP das classes, bônus e modificador de habilidade.",
+  "BSKR.FuryPointsOverrideHint": "Substituir pontos de fúria calculados automaticamente, ignorando qualquer HP das classes, bônus e modificador de habilidade.",
   "BSKR.FP": "FP",
   "BSKR.FPFormula": "Fórmula de Fúria",
   "BSKR.FPFormulaError": "A fórmula de ponto de acerto fornecida não pôde ser avaliada.",
@@ -2591,9 +2593,9 @@
       "Increase": "Aumentar"
     },
     "Available": "{number} disponível",
-    "Config": "Ajuste os dados de Vida",
+    "Config": "Ajuste os dados de fúria",
     "Counted": {
-      "one": "{number} dados de vida",
+      "one": "{number} dados de fúria",
       "other": "{number} pressione dados"
     }
   },
@@ -3343,7 +3345,7 @@
   "BSKR.SpecialTraits": "Características especiais",
   "BSKR.Species": {
     "Label": "Vale",
-    "Add": "Adicionar Vale",
+    "Add": "Adicionar nº de Vales",
     "AddLegacy": "Adicione vale",
     "Features": "Características da vale",
     "FeaturesLegacy": "Recursos de corrida",
@@ -4428,10 +4430,10 @@
     "DamageLong": "{média} ({formula}) {type}",
     "DC": "Dc {dc} {check}",
     "DCPassiveShort": "Dc {dc} passivo {check}",
-    "DCPassiveLong": "passivo {check} pontuação de {dc} ou superior",
+    "DCPassiveLong": "Pontuação passiva de {check} de {dc} ou superior",
     "NoActorWarning": "Nenhum ator selecionado ou atribuído foi encontrado para executar este rolo.",
     "PassiveShort": "passivo {check}",
-    "PassiveLong": "Passive {check} pontuação",
+    "PassiveLong": "Pontuação passiva de {check}",
     "RequestRoll": "ROLO DE PEDIDO",
     "RollRequest": "Solicitação de rolo",
     "SaveShort": "{salvar}",
@@ -4648,11 +4650,11 @@
         "Hint": "Anexe a pontuação de habilidade de destreza bruta para quebrar os laços na iniciativa."
       },
       "InitiativeScore": {
-        "Name": "Pontuação da iniciativa",
-        "Hint": "Use a pontuação de iniciativa de uma criatura (10 + bônus) em vez de rolar para iniciativa.",
-        "All": "Use a pontuação para todos",
+        "Name": "Valor de iniciativa",
+        "Hint": "Use o valor de iniciativa de uma criatura (10 + bônus) em vez de rolar para iniciativa.",
+        "All": "Use o valor para todos",
         "None": "Sempre role para iniciativa",
-        "NPCs": "Use a pontuação para NPCs GM"
+        "NPCs": "Use o valor para NPCs GM"
       }
     },
     "CRITICAL": {
