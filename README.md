@@ -1,4 +1,4 @@
-![](https://github.com/foundryvtt/dnd5e/blob/master/ui/official/dnd5e-repo.jpg?raw=true)
+![](https://github.com/foundryvtt/bskr/blob/master/ui/official/bskr-repo.jpg?raw=true)
 
 # Berserker System (FoundryVTT)
 
