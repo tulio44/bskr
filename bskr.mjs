@@ -34912,6 +34912,7 @@ class Actor5e extends SystemDocumentMixin(Actor) {
 
     this._getRestHitDiceRecovery(config, result);
     this._getRestHitPointRecovery(config, result);
+    this._getRestFuryPointRecovery(config, result);
     this._getRestResourceRecovery(config, result);
     this._getRestSpellRecovery(config, result);
     await this._getRestItemUsesRecovery(config, result);
@@ -38878,7 +38879,7 @@ BSKR.skills = {
   },
   crf: {
     label: "BSKR.SkillCrf",
-    ability: "dex", 
+    ability: "wis", 
     fullKey: "crafting",
     reference: "Compendium.bskr.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.t3EzDU5b9BVAIEVi",
     icon: "icons/magic/fire/flame-burning-campfire-yellow-blue.webp"
