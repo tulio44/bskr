@@ -45,16 +45,16 @@
 
             {{!-- Class --}}
             <div class="class roboto-upper">{{ labels.class }}</div>
-            <div class="class roboto-upper">{{ labels.class }}</div>
         </div>
 
         {{!-- Level, Inspiration, XP, & Buttons --}}
         <div class="right">
 
             {{!-- Level --}}
-            <div class="level-badge badge" aria-label="{{ localize " BSKR.LevelNumber" level=system.details.level }}">
-                {{ system.details.level }}
-            </div>
+<div class="level-badge badge level-{{system.details.level}}"
+     aria-label="{{ localize "BSKR.LevelNumber" level=system.details.level }}">
+</div>
+
 
             {{!-- Inspiration --}}
             <button type="button" class="inspiration unbutton" data-action="toggleInspiration" aria-label="{{ localize "

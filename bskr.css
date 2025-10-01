@@ -6220,7 +6220,70 @@ dialog.bskr2.application {
 .bskr2.sheet:is(.item, .actor) .level-badge {
   width: 78px;
   height: 78px;
+  filter: drop-shadow(0 0 6px var(--bskr-shadow-45));
   background-image: url("ui/level-badge.webp");
+}
+
+/* sobrescreve a imagem para cada nível */
+.bskr2.sheet:is(.item, .actor) .level-badge.level-1 {
+  background-image: url("ui/pat/1soldado.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-2 {
+  background-image: url("ui/pat/2soldado.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-3 {
+  background-image: url("ui/pat/3soldado.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-4 {
+  background-image: url("ui/pat/cabo.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-5 {
+  background-image: url("ui/pat/cabo.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-6 {
+  background-image: url("ui/pat/sargento.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-7 {
+  background-image: url("ui/pat/subtenente.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-8 {
+  background-image: url("ui/pat/2tenente.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-9 {
+  background-image: url("ui/pat/1tenente.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-10 {
+  background-image: url("ui/pat/1tenente.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-11 {
+  background-image: url("ui/pat/1tenente.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-12 {
+  background-image: url("ui/pat/capitao.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-13 {
+  background-image: url("ui/pat/major.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-14 {
+  background-image: url("ui/pat/tenentecoronel.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-15 {
+  background-image: url("ui/pat/coronel.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-16 {
+  background-image: url("ui/pat/general.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-17 {
+  background-image: url("ui/pat/general.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-18 {
+  background-image: url("ui/pat/general.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-19 {
+  background-image: url("ui/pat/deus.svg");
+}
+.bskr2.sheet:is(.item, .actor) .level-badge.level-20 {
+  background-image: url("ui/pat/deus.svg");
 }
 .bskr2.sheet:is(.item, .actor) .create-child {
   display: none;
