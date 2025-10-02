@@ -176,9 +176,9 @@
     "packs": [
         {
             "name": "classes",
-            "label": "Classe Berserker",
+            "label": "Classe Berseker",
             "system": "bskr",
-            "path": "packs/classe-berserker",
+            "path": "packs/classe-berseker",
             "type": "Item",
             "private": false,
             "flags": {
@@ -192,7 +192,7 @@
         },
         {
             "name": "subclasses",
-            "label": "Subclasse Berserker",
+            "label": "Subclasse Berseker",
             "system": "bskr",
             "path": "packs/subclasse-berserker",
             "type": "Item",
@@ -208,7 +208,7 @@
         },
         {
             "name": "classfeatures",
-            "label": "Features Berserkers",
+            "label": "Features Bersekers",
             "system": "bskr",
             "path": "packs/features-berserkers",
             "type": "Item",
@@ -220,6 +220,62 @@
                         "feat",
                         "weapon"
                     ]
+                }
+            }
+        },
+        {
+            "name": "items",
+            "label": "Items",
+            "system": "bskr",
+            "path": "packs/items",
+            "type": "Item",
+            "private": false,
+            "flags": {
+                "bskr": {
+                    "sourceBook": "BSKR",
+                    "types": ["weapon", "equipment", "consumable", "tool", "loot", "feat", "container"]
+                }
+            }
+        },
+                {
+            "name": "races",
+            "label": "Nº de valis",
+            "system": "bskr",
+            "path": "packs/no-de-valis",
+            "type": "Item",
+            "private": false,
+            "flags": {
+                "bskr": {
+                    "sourceBook": "BSKR",
+                    "types": ["race", "feat"]
+                }
+            }
+        },
+                {
+            "name": "backgrounds",
+            "label": "Regiões",
+            "system": "bskr",
+            "path": "packs/regioes",
+            "type": "Item",
+            "private": false,
+            "flags": {
+                "bskr": {
+                    "sourceBook": "BSKR",
+                    "types": ["background", "feat"]
+                }
+            }
+        },
+                {
+            "name": "berserkerart",
+            "label": "Artes Berseker",
+            "system": "bskr",
+            "path": "packs/artes-bersekers",
+            "type": "Item",
+            "private": true,
+            "flags": {
+                "bskr": {
+                    "sourceBook": "BSKR",
+                    "types": ["berserkerArts", "feat"]
                 }
             }
         }
