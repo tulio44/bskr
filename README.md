@@ -37,5 +37,5 @@ O **código-base** foi adaptado do sistema [DnD5e para FoundryVTT](https://gitla
 
 ## Instalação
 
-Para instalar o **Berseker System (BSKR)** no Foundry VTT, insira a seguinte URL no diálogo **Install System**:  
-
+Para instalar o **Berseker System (BSKR)** no Foundry VTT, insira a seguinte Manifesto no diálogo **Install System**:  
+https://raw.githubusercontent.com/tulio44/bskr/main/system.json
