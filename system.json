@@ -7,7 +7,9 @@
         "minimum": "12.331",
         "verified": "13.340"
     },
-    "url": "https://github.com/tulio44/Berserker/",
+    "url": "https://github.com/tulio44/bskr",
+    "manifest": "https://raw.githubusercontent.com/tulio44/bskr/main/system.json",
+    "download": "https://github.com/tulio44/bskr/releases/download/v0.1.0/bskr-v0.1.0.zip",
     "authors": [
         {
             "name": "Tulio44",
