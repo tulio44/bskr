@@ -1,13 +1,13 @@
 ![](https://github.com/tulio44/bskr/blob/master/ui/official/bskr-repo.jpg?raw=true)
 
-# Berserker System (FoundryVTT)
+# Berseker System (FoundryVTT)
 
-O **Berserker System (BSKR)** é um sistema para [Foundry Virtual Tabletop](http://foundryvtt.com),  
+O **Berseker System (BSKR)** é um sistema para [Foundry Virtual Tabletop](http://foundryvtt.com),  
 fortemente inspirado e construído sobre o código-base do sistema oficial de  
 [Dungeons & Dragons 5ª Edição (DnD5e) para FoundryVTT](https://gitlab.com/foundrynet/dnd5e).  
 
 Além de utilizar trechos de código, imagens, compêndios e outros recursos herdados do DnD5e, o projeto  
-foi adaptado e modificado para atender à proposta única do universo **Berserker**.  
+foi adaptado e modificado para atender à proposta única do universo **Berseker**.  
 
 > Este universo foi criado por **Gabriel Bavaroti (aka: hootnal)**,  
 > sendo este repositório uma forma de **homenagem** ao seu trabalho e dedicação.
@@ -16,7 +16,7 @@ foi adaptado e modificado para atender à proposta única do universo **Berserke
 
 ## Funcionalidades
 
-- Fichas de personagens e itens customizadas para o universo Berserker.  
+- Fichas de personagens e itens customizadas para o universo Berseker.  
 - Suporte a rolagens de dados e regras adaptadas.  
 - Compêndios com monstros, heróis, itens, habilidades e feitiços únicos.  
 
@@ -37,5 +37,5 @@ O **código-base** foi adaptado do sistema [DnD5e para FoundryVTT](https://gitla
 
 ## Instalação
 
-Para instalar o **Berserker System (BSKR)** no Foundry VTT, insira a seguinte URL no diálogo **Install System**:  
+Para instalar o **Berseker System (BSKR)** no Foundry VTT, insira a seguinte URL no diálogo **Install System**:  
 
