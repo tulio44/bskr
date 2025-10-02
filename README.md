@@ -1,4 +1,4 @@
-![](https://github.com/tulio44/bskr/blob/master/ui/official/bskr-repo.jpg?raw=true)
+![](https://github.com/tulio44/bskr/blob/main/ui/official/banner-character-dark.webp?raw=true)
 
 # Berseker System (FoundryVTT)
 
